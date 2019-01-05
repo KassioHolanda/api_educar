@@ -18,6 +18,7 @@ class MatriculaViewSet(viewsets.ModelViewSet):
     serializer_class = MatriculaSerializer
 
 
+
 class AlunoFrequenciaMesViewSet(viewsets.ModelViewSet):
     name = 'alunofrequenciames'
     queryset = AlunoFrequenciaMes.objects.all()
