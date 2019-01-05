@@ -39,11 +39,33 @@ urlpatterns = [
 
     path('usuario/', UsuarioList.as_view(), name=UsuarioList.name),
     path('usuario/pessoafisica=<int:pessoafisica>/', UsuarioPessoaFisica.as_view(), name='usuario-pessoafisica-detail'),
-    path('usuario/id=<int:id>/', UsuarioDetalhe.as_view(), name='usuario-detail'),
+    path('usuario/id=<int:id>/', UsuarioDetalhe.as_view(), name='usuario-detail-id'),
     path('usuario/perfil=<int:perfil>/', UsuarioPerfil.as_view(), name='usuario-detail-perfil'),
 
     path('perfil/', PerfilList.as_view(), name=PerfilList.name),
-    path('perfil/id=<int:id>/', PerfilDetalhe.as_view(), name='perfil-detail'),
+    path('perfil/id=<int:id>/', PerfilDetalhe.as_view(), name='perfil-id-detail'),
+
+    path('unidade/', UnidadeList.as_view(), name=UnidadeList.name),
+    path('unidade/id=<int:id>/', UnidadeDetalhe.as_view(), name='unidade-id-detail'),
+
+    path('localescola/', LocalEscolaList.as_view(), name=LocalEscolaList.name),
+    path('localescola/id=<int:id>/', LocalEscolaDetalhe.as_view(), name='unidade-id-detail'),
+    path('localescola/unidade=<int:unidade>/', LocalEscolaUnidade.as_view(), name='localescola-detail-unidade'),
+
+    path('turma/', TurmaViewLis.as_view(), name=TurmaViewLis.name),
+    path('turma/id=<int:id>/', TurmaDetalhe.as_view(), name='turma-detalhe-id'),
+    path('turma/sala=<int:sala>/', TurmaSala.as_view(), name='turma-detalhe-sala'),
+    path('turma/serie=<int:serie>/', TurmaSerie.as_view(), name='turma-detalhe-serie'),
+
+    path('serie/', SerieList.as_view(), name=SerieList.name),
+    path('serie/id=<int:id>/', SerieDetalhe.as_view(), name='serie-detalhe-id'),
+
+    path('serieturma/', SerieTurmaList.as_view(), name=SerieTurmaList.name),
+    path('serieturma/id=<int:id>/', SerieTurmaDetalhe.as_view(), name='serieturma-detalhe-id'),
+    path('serieturma/serie=<int:serie>/', SerieTurmaSerie.as_view(), name='serieturma-detalhe-serie'),
+    path('serieturma/turma=<int:turma>/', SerieTurmaTurma.as_view(), name='serieturma-detalhe-turma'),
+    path('serieturma/turma=<int:turma>/serie=<int:serie>', SerieTurmaSerieTurma.as_view(),
+         name='serieturma-detalhe-turma'),
 
 ]
 

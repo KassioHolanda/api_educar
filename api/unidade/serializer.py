@@ -12,7 +12,7 @@ class UnidadeSerializer(serializers.ModelSerializer):
 class LocalEscolaSerializer(serializers.ModelSerializer):
     class Meta:
         model = LocalEscola
-        fields = 'id', 'descricao', 'unidade'
+        fields = '__all__'
 
 
 class TurmaSerializer(serializers.ModelSerializer):
@@ -24,7 +24,7 @@ class TurmaSerializer(serializers.ModelSerializer):
 class SerieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Serie
-        fields = 'id', 'descricao', 'nivel'
+        fields = '__all__'
 
 
 class SerieTurmaSerializer(serializers.ModelSerializer):
