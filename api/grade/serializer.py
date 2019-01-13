@@ -12,19 +12,19 @@ class DisciplinaSerializer(serializers.ModelSerializer):
 class GradeCursoSerializer(serializers.ModelSerializer):
     class Meta:
         model = GradeCurso
-        fields = 'id', 'professor', 'seriedisciplina', 'turma', 'disciplina'
+        fields = '__all__'
 
 
 class SerieDisciplinaSerializer(serializers.ModelSerializer):
     class Meta:
         model = SerieDisciplina
-        fields = 'id', 'disciplina', 'serie'
+        fields = '__all__'
 
 
 class AnoLetivoSerializer(serializers.ModelSerializer):
     class Meta:
         model = AnoLetivo
-        fields = 'id', 'descricao', 'datafinal', 'datainicio', 'fechadonota'
+        fields = '__all__'
 
 
 class DisciplinaAlunoSerializer(serializers.ModelSerializer):

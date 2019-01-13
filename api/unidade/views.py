@@ -16,28 +16,10 @@ class UnidadeList(generics.ListAPIView):
     name = 'unidade-list'
 
 
-class UnidadeDetalhe(APIView):
-    def get_object(self, id):
-        return Unidade.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        unidade = self.get_object(id)
-        serializer = UnidadeSerializer(unidade, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = UnidadeSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = UnidadeSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class UnidadeDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Unidade.objects.all()
+    serializer_class = UnidadeSerializer
+    name = 'unidade-detalhe'
 
 
 class LocalEscolaList(generics.ListAPIView):
@@ -56,28 +38,10 @@ class LocalEscolaUnidade(APIView):
         return Response(serializer.data)
 
 
-class LocalEscolaDetalhe(APIView):
-    def get_object(self, id):
-        return LocalEscola.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        localescola = self.get_object(id)
-        serializer = LocalEscolaSerializer(localescola, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = LocalEscolaSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = LocalEscolaSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class LocalEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    queryset = LocalEscola.objects.all()
+    serializer_class = LocalEscolaSerializer
+    name = 'localescola-detalhe'
 
 
 class TurmaViewLis(generics.ListAPIView):
@@ -88,7 +52,7 @@ class TurmaViewLis(generics.ListAPIView):
 
 class TurmaSala(APIView):
     def get_object(self, sala):
-        return Turma.objects.filter(sala=sala)
+        return Turma.objects.filter(sala=sala).filter(statusturma='CADASTRADA').filter(nivel='FUNDAMENTAL')
 
     def get(self, request, sala, format=None):
         turma = self.get_object(sala)
@@ -96,28 +60,10 @@ class TurmaSala(APIView):
         return Response(serializer.data)
 
 
-class TurmaDetalhe(APIView):
-    def get_object(self, id):
-        return Turma.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        turma = self.get_object(id)
-        serializer = TurmaSerializer(turma, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = TurmaSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = TurmaSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class TurmaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    name = 'turma-detalhe'
 
 
 class TurmaSerie(APIView):
@@ -136,28 +82,10 @@ class SerieList(generics.ListAPIView):
     name = 'serie-list'
 
 
-class SerieDetalhe(APIView):
-    def get_object(self, id):
-        return Serie.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        serie = self.get_object(id)
-        serializer = SerieSerializer(serie, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = SerieSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = SerieSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class SerieDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Serie.objects.all()
+    serializer_class = SerieSerializer
+    name = 'serie-detalhe'
 
 
 class SerieTurmaList(generics.ListAPIView):
@@ -197,24 +125,6 @@ class SerieTurmaSerieTurma(APIView):
 
 
 class SerieTurmaDetalhe(APIView):
-    def get_object(self, id):
-        return SerieTurma.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        serie = self.get_object(id)
-        serializer = SerieTurmaSerializer(serie, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = SerieTurmaSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = SerieTurmaSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = SerieTurma.objects.all()
+    serializer_class = SerieTurmaSerializer
+    name = 'serieturma-detalhe'

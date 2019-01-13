@@ -6,6 +6,7 @@ from pessoa.models import PessoaFisica, Usuario, Perfil
 from django.shortcuts import get_object_or_404
 from pessoa.serializer import PessoaFisicaSerializer, UsuarioSerializer, PerfilSerializer
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import status
@@ -17,28 +18,10 @@ class PessoaFisicaList(generics.ListAPIView):
     name = 'pessoa-list'
 
 
-class PessoaFisicaDetalhe(APIView):
-    def get_object(self, id):
-        return PessoaFisica.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        pessoa = self.get_object(id)
-        serializer = PessoaFisicaSerializer(pessoa, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = PessoaFisicaSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = PessoaFisicaSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class PessoaFisicaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PessoaFisica.objects.all()
+    serializer_class = PessoaFisicaSerializer
+    name = 'pessoa-detalhe'
 
 
 class PessoaFisicaCPF(APIView):
@@ -77,28 +60,10 @@ class UsuarioPerfil(APIView):
         return Response(serializer.data)
 
 
-class UsuarioDetalhe(APIView):
-    def get_object(self, id):
-        return Usuario.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        usuario = self.get_object(id)
-        serializer = UsuarioSerializer(usuario, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = UsuarioSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = UsuarioSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class UsuarioDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    name = 'usuario-detalhe'
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
 
 
 class PerfilList(generics.ListAPIView):
@@ -107,29 +72,10 @@ class PerfilList(generics.ListAPIView):
     serializer_class = PerfilSerializer
 
 
-class PerfilDetalhe(APIView):
-    def get_object(self, id):
-        return Perfil.objects.filter(id=id)
-
-    def get(self, request, id, format=None):
-        perfil = self.get_object(id)
-        serializer = PerfilSerializer(perfil, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = PerfilSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, id, format=None):
-        post = self.get_object(id)
-        serializer = PerfilSerializer(post, data=request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+class PerfilDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    name = 'perfil-detalhe'
+    queryset = Perfil.objects.all()
+    serializer_class = PerfilSerializer
 
 # class ApiRoot(generics.GenericAPIView):
 #     name = 'api-root'
