@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg, Max
 
 
 # Create your models here.
@@ -10,7 +11,6 @@ class Disciplina(models.Model):
         managed = False
         db_table = 'disciplina'
         ordering = ('id',)
-
 
 
 class GradeCurso(models.Model):
@@ -69,6 +69,11 @@ class DisciplinaAluno(models.Model):
         managed = False
         db_table = 'disciplinaaluno'
         ordering = ('id',)
+
+    def save(self, *args, **kwargs):
+        ultimoid = DisciplinaAluno.objects.all().aggregate(Max('id'))
+        self.id = ultimoid['id__max'] + 1
+        super(DisciplinaAluno, self).save()
 
 
 class SerieDisciplina(models.Model):

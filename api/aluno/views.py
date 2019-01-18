@@ -26,7 +26,8 @@ class AlunoDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class MatriculaList(generics.ListCreateAPIView):
     name = 'matricula-list'
-    queryset = Matricula.objects.all()
+    # recuperando apenas usuarios com matricula em andamento
+    queryset = Matricula.objects.filter(statusmatricula='EM_ANDAMENTO')
     serializer_class = MatriculaSerializer
 
 

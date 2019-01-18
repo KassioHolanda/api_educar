@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'educar',
+        'NAME': 'educar_atualizado',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

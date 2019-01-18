@@ -4,6 +4,9 @@ from django.db.models import Avg, Max
 
 # Create your models here.
 class TipoOcorrencia(models.Model):
+    aluno = models.BooleanField()
+    funcionario = models.BooleanField()
+    enviasms=models.BooleanField()
     descricao = models.CharField(max_length=255)
     codigo = models.IntegerField()
 

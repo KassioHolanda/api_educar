@@ -71,6 +71,25 @@ class SerieDisciplinaSerie(APIView):
         return Response(serializer.data)
 
 
+class SerieDisciplinaDisciplina(APIView):
+    def get_object(self, disciplina):
+        return SerieDisciplina.objects.filter(disciplina=disciplina)
+
+    def get(self, request, disciplina, format=None):
+        sd = self.get_object(disciplina)
+        serializer = SerieDisciplinaSerializer(sd, many=True)
+        return Response(serializer.data)
+
+
+class DisciplinaAlunoMatriculaDetalhe(APIView):
+    def get_object(self, matricula):
+        return DisciplinaAluno.objects.filter(matricula=matricula)
+
+    def get(self, request, matricula, format=None):
+        da = self.get_object(matricula)
+        serializer = DisciplinaAlunoSerializer(da, many=True)
+        return Response(serializer.data)
+
 class SerieDisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = SerieDisciplina.objects.all()
     serializer_class = SerieDisciplinaSerializer

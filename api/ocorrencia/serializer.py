@@ -5,7 +5,7 @@ from ocorrencia.models import *
 class TipoOcorrenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoOcorrencia
-        fields = 'id', 'descricao', 'codigo'
+        fields = '__all__'
 
 
 class OcorrenciaSerializer(serializers.ModelSerializer):

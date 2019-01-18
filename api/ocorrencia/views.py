@@ -11,7 +11,7 @@ from rest_framework import generics
 
 # Create your views here.
 
-class TipoOcorrenciaList(generics.ListAPIView):
+class TipoOcorrenciaList(generics.ListCreateAPIView):
     name = 'tipoocorrencia-list'
     queryset = TipoOcorrencia.objects.all()
     serializer_class = TipoOcorrenciaSerializer

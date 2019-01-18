@@ -40,6 +40,9 @@ class Turma(models.Model):
     nivel = models.CharField('nivel', max_length=255)
     statusturma = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.descricao
+
     class Meta:
         managed = False
         db_table = 'turma'

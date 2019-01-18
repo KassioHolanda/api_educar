@@ -88,6 +88,7 @@ urlpatterns = [
     path('seriedisciplina/', SerieDisciplinaList.as_view(), name=SerieDisciplinaList.name),
     path('seriedisciplina/id=<int:pk>/', SerieDisciplinaDetalhe.as_view(), name=SerieDisciplinaDetalhe.name),
     path('seriedisciplina/serie=<int:serie>/', SerieDisciplinaSerie.as_view(), name='seriedisciplina-detalhe-serie'),
+    path('seriedisciplina/disciplina=<int:disciplina>/', SerieDisciplinaDisciplina.as_view(), name='seriedisciplina-detalhe-disciplina'),
 
     path('anoletivo/', AnoLetivoList.as_view(), name=AnoLetivoList.name),
     path('anoletivo/id=<int:pk>/', AnoLetivoDetalhe.as_view(), name=AnoLetivoDetalhe.name),
@@ -97,6 +98,7 @@ urlpatterns = [
 
     path('disciplinaaluno/', DisciplinaAlunoList.as_view(), name=DisciplinaAlunoList.name),
     path('disciplinaaluno/id=<int:pk>/', DisciplinaAlunoDetalhe.as_view(), name=DisciplinaAlunoDetalhe.name),
+    path('disciplinaaluno/matricula=<int:matricula>/', DisciplinaAlunoMatriculaDetalhe.as_view(), name='disciplinaaluno-matricula-detalhe'),
 
     path('funcionario/', FuncionarioList.as_view(), name=FuncionarioList.name),
     path('funcionario/id=<int:pk>/', FuncionarioDetail.as_view(), name=FuncionarioDetail.name),
