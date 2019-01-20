@@ -6,16 +6,16 @@ from aluno.models import *
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
-        fields = 'id', 'pessoafisica', 'datacadastro'
+        fields = '__all__'
 
 
 class MatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
-        fields = 'id', 'aluno', 'turma', 'statusmatricula', 'datamatricula', 'statusatual'
+        fields = '__all__'
 
 
 class AlunoFrequenciaMesSerializer(serializers.ModelSerializer):
     class Meta:
         model = AlunoFrequenciaMes
-        fields = 'id', 'totalfaltas', 'matricula', 'bimestre'
+        fields = '__all__'

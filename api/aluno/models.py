@@ -44,6 +44,10 @@ class AlunoFrequenciaMes(models.Model):
                                  related_name='%(app_label)s_%(class)s_related',
                                  db_column='bimestre_id')
 
+    disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE,
+                                 related_name='%(app_label)s_%(class)s_related',
+                                 db_column='disciplina_id')
+
     class Meta:
         managed = False
         db_table = 'alunofrequenciames'

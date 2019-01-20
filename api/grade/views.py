@@ -90,6 +90,7 @@ class DisciplinaAlunoMatriculaDetalhe(APIView):
         serializer = DisciplinaAlunoSerializer(da, many=True)
         return Response(serializer.data)
 
+
 class SerieDisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = SerieDisciplina.objects.all()
     serializer_class = SerieDisciplinaSerializer
@@ -130,3 +131,13 @@ class SituacaoTurmaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = SituacaoTurmaMes.objects.all()
     serializer_class = SituacaoTurmaMesSerializer
     name = 'situacaoturmames-detalhe'
+
+
+class SituacaoTurmaMesTurma(APIView):
+    def get_object(self, turma):
+        return SituacaoTurmaMes.objects.filter(turma=turma)
+
+    def get(self, request, turma, format=None):
+        da = self.get_object(turma)
+        serializer = SituacaoTurmaMesSerializer(da, many=True)
+        return Response(serializer.data)

@@ -58,5 +58,16 @@ class AlunoFrequenciaMesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = AlunoFrequenciaMes.objects.all()
     serializer_class = AlunoFrequenciaMesSerializer
 
+
+class AlunoFrequenciaMesMatricula(APIView):
+    def get_object(self, matricula):
+        return AlunoFrequenciaMes.objects.filter(matricula=matricula)
+
+    def get(self, request, matricula, format=None):
+        alnofrequencia = self.get_object(matricula)
+        serializer = AlunoFrequenciaMesSerializer(alnofrequencia, many=True)
+        return Response(serializer.data)
+
+
 # generics.ListCreateAPIView
 # generics.RetrieveUpdateDestroyAPIView

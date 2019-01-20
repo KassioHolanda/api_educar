@@ -95,6 +95,7 @@ urlpatterns = [
 
     path('situacaoturmames/', SituacaoTurmaMesList.as_view(), name=SituacaoTurmaMesList.name),
     path('situacaoturmames/id=<int:pk>/', SituacaoTurmaMesDetalhe.as_view(), name=SituacaoTurmaMesDetalhe.name),
+path('situacaoturmames/turma=<int:turma>/', SituacaoTurmaMesTurma.as_view(), name='situacaoturmames-detalhe-turma'),
 
     path('disciplinaaluno/', DisciplinaAlunoList.as_view(), name=DisciplinaAlunoList.name),
     path('disciplinaaluno/id=<int:pk>/', DisciplinaAlunoDetalhe.as_view(), name=DisciplinaAlunoDetalhe.name),
@@ -124,6 +125,9 @@ urlpatterns = [
 
     path('alunofrequenciames/', AlunoFrequenciaMesList.as_view(), name=AlunoFrequenciaMesList.name),
     path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name=AlunoFrequenciaMesDetail.name),
+    path('alunofrequenciames/matricula=<int:matricula>/', AlunoFrequenciaMesMatricula.as_view(), name='alunofrequenciames-detalhe-matricula'),
+
+
 
 ]
 
