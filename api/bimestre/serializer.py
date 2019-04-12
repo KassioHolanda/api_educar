@@ -3,7 +3,7 @@ from rest_framework import serializers
 from bimestre.models import Bimestre
 
 
-class BimestreSerializer(serializers.ModelSerializer):
+class BimestreSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Bimestre
-        fields = '__all__'
+        fields = ('id','descricao', 'sequencia', 'temnota')

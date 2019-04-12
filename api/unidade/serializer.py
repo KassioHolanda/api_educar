@@ -3,31 +3,31 @@ from rest_framework import serializers
 from unidade.models import Unidade, LocalEscola, Turma, Serie, SerieTurma
 
 
-class UnidadeSerializer(serializers.ModelSerializer):
+class UnidadeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Unidade
         fields = 'id', 'abreviacao', 'cnpj', 'nome'
 
 
-class LocalEscolaSerializer(serializers.ModelSerializer):
+class LocalEscolaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = LocalEscola
-        fields = '__all__'
+        fields = 'id', 'descricao', 'unidade'
 
 
-class TurmaSerializer(serializers.ModelSerializer):
+class TurmaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Turma
-        fields = '__all__'
+        fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma'
 
 
-class SerieSerializer(serializers.ModelSerializer):
+class SerieSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Serie
-        fields = '__all__'
+        fields = 'id', 'descricao', 'nivel'
 
 
-class SerieTurmaSerializer(serializers.ModelSerializer):
+class SerieTurmaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SerieTurma
-        fields = '__all__'
+        fields = 'id', 'serie', 'turma'

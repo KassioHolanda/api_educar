@@ -21,6 +21,6 @@ class BimestreList(generics.ListCreateAPIView):
 
 
 class BimestreDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'bimestre-detalhe'
+    name = 'bimestre-detail'
     queryset = Bimestre.objects.all()
     serializer_class = BimestreSerializer

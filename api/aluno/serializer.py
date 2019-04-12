@@ -3,19 +3,19 @@ from rest_framework import serializers
 from aluno.models import *
 
 
-class AlunoSerializer(serializers.ModelSerializer):
+class AlunoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Aluno
-        fields = '__all__'
+        fields = ('id', 'pessoafisica', 'datacadastro')
 
 
-class MatriculaSerializer(serializers.ModelSerializer):
+class MatriculaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Matricula
-        fields = '__all__'
+        fields = 'id', 'aluno', 'turma', 'statusmatricula', 'datamatricula', 'statusatual', 'serie', 'anoletivo'
 
 
-class AlunoFrequenciaMesSerializer(serializers.ModelSerializer):
+class AlunoFrequenciaMesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = AlunoFrequenciaMes
-        fields = '__all__'
+        fields = 'id','totalfaltas', 'tipolancamentofrequencia', 'matricula', 'bimestre', 'disciplina', 'disciplinaaluno'

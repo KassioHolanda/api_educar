@@ -2,14 +2,14 @@ from rest_framework import serializers
 from ocorrencia.models import *
 
 
-class TipoOcorrenciaSerializer(serializers.ModelSerializer):
+class TipoOcorrenciaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TipoOcorrencia
-        fields = '__all__'
+        fields = 'id', 'funcionario', 'enviasms', 'descricao', 'codigo'
 
 
-class OcorrenciaSerializer(serializers.ModelSerializer):
+class OcorrenciaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Ocorrencia
-        fields = '__all__'
-
+        fields = 'id', 'datahoracadastro', 'funcionarioescola', 'descricao', 'matriculaaluno', 'tipoocorrencia',
+        'aluno', 'anoletivo', 'funcionario', 'unidade', 'enviadosms', 'anoletivo', 'dataenviosms', 'resumosms', 'observacao', 'numerotelefone'

@@ -16,7 +16,7 @@ class AlunoNotaMesList(generics.ListCreateAPIView):
 
 
 class AlunoNotaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'alunonotames-detalhe'
+    name = 'alunonotames-detail'
     queryset = AlunoNotaMes.objects.all()
     serializer_class = AlunoNotaMesSerializer
 
