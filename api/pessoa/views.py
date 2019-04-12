@@ -21,7 +21,7 @@ class PessoaFisicaList(generics.ListAPIView):
 class PessoaFisicaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = PessoaFisica.objects.all()
     serializer_class = PessoaFisicaSerializer
-    name = 'pessoa-detalhe'
+    name = 'pessoa-detail'
 
 
 class PessoaFisicaCPF(APIView):
@@ -61,7 +61,7 @@ class UsuarioPerfil(APIView):
 
 
 class UsuarioDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'usuario-detalhe'
+    name = 'usuario-detail'
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 

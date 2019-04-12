@@ -30,9 +30,11 @@ class AnoLetivoSerializer(serializers.HyperlinkedModelSerializer):
 class DisciplinaAlunoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DisciplinaAluno
-        fields = 'id', 'cargahoraria', 'statusdisciplinaaluno', 'statusatual', 'matricula', 'seriedisciplina', 'mediaacumulada', 'mesesfechadonota', 'notaacumulada', 'datacadastroprovafinal', 'notaprovafinal',
-        'fechadoprovafinal', 'datacadastroatualizacaoprovafinal', 'notaantigaprovafinal', 'usuarioatualizacaoprovafinal'
-
+        fields = ('id',
+                  'cargahoraria',
+                  'statusdisciplinaaluno', 'statusatual', 'matricula', 'seriedisciplina', 'mediaacumulada',
+                  'mesesfechadonota', 'notaacumulada', 'datacadastroprovafinal', 'notaprovafinal', 'fechadoprovafinal',
+                  'datacadastroatualizacaoprovafinal', 'notaantigaprovafinal', 'usuarioatualizacaoprovafinal')
 
 class SituacaoTurmaMesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

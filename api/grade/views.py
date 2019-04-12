@@ -12,7 +12,7 @@ from grade.serializer import GradeCursoSerializer, DisciplinaSerializer, SerieDi
 
 
 class DisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'disciplina-detalhe'
+    name = 'disciplina-detail'
     queryset = Disciplina.objects.all()
     serializer_class = DisciplinaSerializer
 
@@ -50,7 +50,7 @@ class GradeCursoProfessorTurma(APIView):
 
 
 class GradeCursoDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'gradecurso-detalhe'
+    name = 'gradecurso-detail'
     queryset = GradeCurso.objects.all()
     serializer_class = GradeCursoSerializer
 
@@ -94,7 +94,7 @@ class DisciplinaAlunoMatriculaDetalhe(APIView):
 class SerieDisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = SerieDisciplina.objects.all()
     serializer_class = SerieDisciplinaSerializer
-    name = 'seriedisciplina-detalhe'
+    name = 'seriedisciplina-detail'
 
 
 class AnoLetivoList(generics.ListCreateAPIView):
@@ -106,7 +106,7 @@ class AnoLetivoList(generics.ListCreateAPIView):
 class AnoLetivoDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = AnoLetivo.objects.all()
     serializer_class = AnoLetivoSerializer
-    name = 'anoletivo-detalhe'
+    name = 'anoletivo-detail'
 
 
 class DisciplinaAlunoList(generics.ListCreateAPIView):
@@ -118,7 +118,7 @@ class DisciplinaAlunoList(generics.ListCreateAPIView):
 class DisciplinaAlunoDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = DisciplinaAluno.objects.all()
     serializer_class = DisciplinaAlunoSerializer
-    name = 'disciplinaaluno-detalhe'
+    name = 'disciplinaaluno-detail'
 
 
 class SituacaoTurmaMesList(generics.ListCreateAPIView):
@@ -130,7 +130,7 @@ class SituacaoTurmaMesList(generics.ListCreateAPIView):
 class SituacaoTurmaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = SituacaoTurmaMes.objects.all()
     serializer_class = SituacaoTurmaMesSerializer
-    name = 'situacaoturmames-detalhe'
+    name = 'situacaoturmames-detail'
 
 
 class SituacaoTurmaMesTurma(APIView):

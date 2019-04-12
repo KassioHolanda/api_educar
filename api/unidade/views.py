@@ -19,7 +19,7 @@ class UnidadeList(generics.ListAPIView):
 class UnidadeDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = Unidade.objects.all()
     serializer_class = UnidadeSerializer
-    name = 'unidade-detalhe'
+    name = 'unidade-detail'
 
 
 class LocalEscolaList(generics.ListAPIView):
@@ -41,7 +41,7 @@ class LocalEscolaUnidade(APIView):
 class LocalEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = LocalEscola.objects.all()
     serializer_class = LocalEscolaSerializer
-    name = 'localescola-detalhe'
+    name = 'localescola-detail'
 
 
 class TurmaViewLis(generics.ListAPIView):
@@ -63,7 +63,7 @@ class TurmaSala(APIView):
 class TurmaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = Turma.objects.all()
     serializer_class = TurmaSerializer
-    name = 'turma-detalhe'
+    name = 'turma-detail'
 
 
 class TurmaSerie(APIView):
@@ -85,7 +85,7 @@ class SerieList(generics.ListAPIView):
 class SerieDetalhe(generics.RetrieveUpdateDestroyAPIView):
     queryset = Serie.objects.all()
     serializer_class = SerieSerializer
-    name = 'serie-detalhe'
+    name = 'serie-detail'
 
 
 class SerieTurmaList(generics.ListAPIView):
@@ -127,4 +127,4 @@ class SerieTurmaSerieTurma(APIView):
 class SerieTurmaDetalhe(APIView):
     queryset = SerieTurma.objects.all()
     serializer_class = SerieTurmaSerializer
-    name = 'serieturma-detalhe'
+    name = 'serieturma-detail'

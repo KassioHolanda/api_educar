@@ -23,7 +23,7 @@ class FuncionarioList(generics.ListCreateAPIView):
 
 
 class FuncionarioDetail(generics.RetrieveUpdateDestroyAPIView):
-    name = 'funcionario-detalhe'
+    name = 'funcionario-detail'
     queryset = Funcionario.objects.all()
     serializer_class = FuncionarioSerializer
 
@@ -46,7 +46,7 @@ class CargoList(generics.ListCreateAPIView):
 
 
 class CargoDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'cargo-detalhe'
+    name = 'cargo-detail'
     queryset = Cargo.objects.all()
     serializer_class = CargoSerializer
 
@@ -58,7 +58,7 @@ class FuncionarioEscolaLista(generics.ListCreateAPIView):
 
 
 class FuncionarioEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'funcionarioescola-detalhe'
+    name = 'funcionarioescola-detail'
     queryset = FuncionarioEscola.objects.all()
     serializer_class = FuncionarioEscolaSerializer
 

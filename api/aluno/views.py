@@ -19,7 +19,7 @@ class AlunoList(generics.ListCreateAPIView):
 
 
 class AlunoDetail(generics.RetrieveUpdateDestroyAPIView):
-    name = 'aluno-detalhe'
+    name = 'aluno-detail'
     queryset = Aluno.objects.all()
     serializer_class = AlunoSerializer
 
