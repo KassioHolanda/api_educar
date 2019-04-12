@@ -73,7 +73,7 @@ class PerfilList(generics.ListAPIView):
 
 
 class PerfilDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    name = 'perfil-detalhe'
+    name = 'perfil-detail'
     queryset = Perfil.objects.all()
     serializer_class = PerfilSerializer
 

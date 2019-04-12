@@ -6,7 +6,7 @@ from unidade.models import Unidade, LocalEscola, Turma, Serie, SerieTurma
 class UnidadeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Unidade
-        fields = 'id', 'abreviacao', 'cnpj', 'nome'
+        fields = ('id', 'abreviacao', 'cnpj', 'nome')
 
 
 class LocalEscolaSerializer(serializers.HyperlinkedModelSerializer):
