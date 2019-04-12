@@ -3,10 +3,41 @@
   <component name="ChangeListManager">
     <list default="true" id="ad3e90de-8dbf-4e1f-b16a-6d1dc86d15ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aluno/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/aluno/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aluno/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aluno/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aluno/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aluno/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grade/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/grade/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bimestre/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/bimestre/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bimestre/migrations/0002_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/funcionario/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0002_funcionario.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0003_auto_20180921_1107.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0004_auto_20180921_1108.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0005_cargo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0006_funcionarioescola.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0007_disciplina.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0008_gradecurso.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/funcionario/migrations/0009_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grade/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/grade/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grade/migrations/0002_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grade/migrations/0003_auto_20181227_1730.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grade/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/grade/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nota/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/nota/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nota/migrations/0002_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nota/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/nota/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nota/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nota/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocorrencia/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocorrencia/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ocorrencia/migrations/0002_auto_20181227_1730.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ocorrencia/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ocorrencia/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pessoa/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/pessoa/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pessoa/migrations/0002_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/unidade/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0002_anoletivo_localescola_serie_seriedisciplina_turma.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0003_auto_20180924_1003.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0004_auto_20180924_1026.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0005_auto_20181119_1011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/unidade/migrations/0006_serieturma.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,35 +53,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grade/views.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aluno/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="142" column="40" selection-start-line="142" selection-start-column="40" selection-end-line="142" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1207">
+              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ocorrencia/views.py">
+        <entry file="file://$PROJECT_DIR$/aluno/serializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="25" column="47" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ocorrencia/serializer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+            <state relative-caret-position="323">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -59,12 +75,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ocorrencia/models.py">
+        <entry file="file://$PROJECT_DIR$/aluno/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="816">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grade/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="1190">
+              <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -82,60 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/unidade/models.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-              <folding>
-                <marker date="1547636320533" expanded="true" signature="278:309" ph="..." />
-                <marker date="1547636320533" expanded="true" signature="1893:1929" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="96" column="53" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
-              <folding>
-                <element signature="e#627#675#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aluno/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aluno/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/unidade/serializer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="277">
+              <caret line="83" column="59" lean-forward="true" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -165,7 +132,6 @@
       <list>
         <option value="$PROJECT_DIR$/professor/serializer.py" />
         <option value="$PROJECT_DIR$/professor/views.py" />
-        <option value="$PROJECT_DIR$/aluno/serializer.py" />
         <option value="$PROJECT_DIR$/ocorrencia/test.py" />
         <option value="$PROJECT_DIR$/professor/models.py" />
         <option value="$PROJECT_DIR$/funcionario/serializer.py" />
@@ -176,7 +142,6 @@
         <option value="$PROJECT_DIR$/funcionario/models.py" />
         <option value="$PROJECT_DIR$/bimestre/serializer.py" />
         <option value="$PROJECT_DIR$/nota/models.py" />
-        <option value="$PROJECT_DIR$/aluno/models.py" />
         <option value="$PROJECT_DIR$/user/models.py" />
         <option value="$PROJECT_DIR$/pessoa/views.py" />
         <option value="$PROJECT_DIR$/grade/serializer.py" />
@@ -187,14 +152,16 @@
         <option value="$PROJECT_DIR$/unidade/views.py" />
         <option value="$PROJECT_DIR$/api/settings.py" />
         <option value="$PROJECT_DIR$/unidade/serializer.py" />
-        <option value="$PROJECT_DIR$/aluno/views.py" />
         <option value="$PROJECT_DIR$/unidade/models.py" />
         <option value="$PROJECT_DIR$/ocorrencia/serializer.py" />
         <option value="$PROJECT_DIR$/ocorrencia/models.py" />
-        <option value="$PROJECT_DIR$/grade/models.py" />
         <option value="$PROJECT_DIR$/ocorrencia/views.py" />
         <option value="$PROJECT_DIR$/api/urls.py" />
         <option value="$PROJECT_DIR$/grade/views.py" />
+        <option value="$PROJECT_DIR$/aluno/serializer.py" />
+        <option value="$PROJECT_DIR$/aluno/views.py" />
+        <option value="$PROJECT_DIR$/aluno/models.py" />
+        <option value="$PROJECT_DIR$/grade/models.py" />
       </list>
     </option>
   </component>
@@ -220,6 +187,11 @@
             <path>
               <item name="api" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="aluno" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -241,10 +213,10 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="debug&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../IFPI/Topicos Especiais em Programacao 2/avaliacao2/tesi-02-avaliation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../CETI/QrCode" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -344,6 +316,13 @@
       <workItem from="1547993443403" duration="203000" />
       <workItem from="1547995594989" duration="120000" />
       <workItem from="1548000905738" duration="8000" />
+      <workItem from="1548015048842" duration="133000" />
+      <workItem from="1548069371297" duration="143000" />
+      <workItem from="1548808121598" duration="672000" />
+      <workItem from="1550231958072" duration="138000" />
+      <workItem from="1550855453240" duration="935000" />
+      <workItem from="1550867548824" duration="1196000" />
+      <workItem from="1552307073587" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="alterando filtros url pacote pessoa">
       <created>1546695382968</created>
@@ -373,16 +352,23 @@
       <option name="project" value="LOCAL" />
       <updated>1547812658714</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="atualizacoes">
+      <created>1548015163611</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1548015163611</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49759000" />
+    <option name="totallyTimeSpent" value="53025000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29957357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -395,9 +381,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -417,13 +403,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/funcionario/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aluno/serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bimestre/serializer.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -568,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grade/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -608,17 +580,7 @@
     <entry file="file://$PROJECT_DIR$/ocorrencia/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grade/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -646,23 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aluno/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aluno/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/unidade/serializer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -670,6 +615,50 @@
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aluno/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aluno/serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aluno/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grade/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="83" column="59" lean-forward="true" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
         </state>
       </provider>
     </entry>

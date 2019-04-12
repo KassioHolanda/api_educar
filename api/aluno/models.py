@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg, Max
 
 
 # Create your models here.
@@ -27,6 +28,9 @@ class Matricula(models.Model):
     serie = models.ForeignKey('unidade.Serie', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
                               db_column='serie_id')
 
+    anoletivo = models.ForeignKey('grade.AnoLetivo', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
+                              db_column='anoletivo_id')
+
     def __str__(self):
         return self.statusmatricula
 
@@ -38,17 +42,32 @@ class Matricula(models.Model):
 
 class AlunoFrequenciaMes(models.Model):
     totalfaltas = models.IntegerField(null=False)
+    tipolancamentofrequencia = models.CharField(null=True, max_length=255)
+
     matricula = models.ForeignKey('Matricula', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
                                   db_column='matricula_id')
+    
     bimestre = models.ForeignKey('bimestre.Bimestre', on_delete=models.CASCADE,
-                                 related_name='%(app_label)s_%(class)s_related',
+                                 related_name='%(app_label)s_%(class)s_related', 
                                  db_column='bimestre_id')
 
-    disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE,
+    disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE, null=True, 
                                  related_name='%(app_label)s_%(class)s_related',
                                  db_column='disciplina_id')
+
+    disciplinaaluno = models.ForeignKey('grade.DisciplinaAluno', on_delete=models.CASCADE,
+                                 related_name='%(app_label)s_%(class)s_related', 
+                                 db_column='disciplinaaluno_id')
 
     class Meta:
         managed = False
         db_table = 'alunofrequenciames'
         ordering = ('id',)
+    #
+    # def save(self, *args, **kwargs):
+    #     ultimoid = AlunoFrequenciaMes.objects.all().aggregate(Max('id'))
+    #     self.id = ultimoid['id__max'] + 1
+    #     super(AlunoFrequenciaMes, self).save()
+    #
+    #
+    #

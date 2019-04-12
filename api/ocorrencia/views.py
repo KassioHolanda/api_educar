@@ -33,3 +33,13 @@ class OcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'ocorrencia-detalhe'
     queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializer
+
+
+class OcorrenciaDetalheAluno(APIView):
+    def get_object(self, aluno):
+        return Ocorrencia.objects.filter(aluno=aluno)
+
+    def get(self, request, aluno, format=None):
+        anm = self.get_object(aluno)
+        serializer = OcorrenciaSerializer(anm, many=True)
+        return Response(serializer.data)

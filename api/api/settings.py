@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'educar_atualizado',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'educar_teste',
+        'USER': 'app_professor',
+        'PASSWORD': 'D3lt@pr0',
+        'HOST': 'delta.czk02kyg8fah.us-east-1.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -105,7 +105,7 @@ REST_FRAMEWORK = {
     # }
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20
+    'PAGE_SIZE': 10
 
 }
 

@@ -42,7 +42,6 @@ urlpatterns = [
     path('usuario/id=<int:pk>/', UsuarioDetalhe.as_view(), name='usuario-detail-id'),
     path('usuario/perfil=<int:perfil>/', UsuarioPerfil.as_view(), name='usuario-detail-perfil'),
 
-
     path('perfil/', PerfilList.as_view(), name=PerfilList.name),
     path('perfil/id=<int:pk>/', PerfilDetalhe.as_view(), name='perfil-id-detail'),
 
@@ -73,9 +72,12 @@ urlpatterns = [
 
     path('ocorrencia/', OcorrenciaList.as_view(), name=OcorrenciaList.name),
     path('ocorrencia/id=<int:pk>/', OcorrenciaDetalhe.as_view(), name='ocorrencia-detalhe-id'),
+    path('ocorrencia/aluno=<int:aluno>/', OcorrenciaDetalheAluno.as_view(), name='ocorrencia-detalhe-aluno'),
 
     path('alunonotames/', AlunoNotaMesList.as_view(), name=AlunoNotaMesList.name),
     path('alunonotames/id=<int:pk>/', AlunoNotaMesDetalhe.as_view(), name=AlunoNotaMesDetalhe.name),
+    path('alunonotames/matricula=<int:matricula>/', AlunoNotaMesDetalheMatricula.as_view(),
+         name='AlunoNotaMesDetalhe Matricula'),
 
     path('disciplina/', DisciplinaList.as_view(), name=DisciplinaList.name),
     path('disciplina/id=<int:pk>/', DisciplinaDetalhe.as_view(), name=DisciplinaDetalhe.name),
@@ -88,22 +90,25 @@ urlpatterns = [
     path('seriedisciplina/', SerieDisciplinaList.as_view(), name=SerieDisciplinaList.name),
     path('seriedisciplina/id=<int:pk>/', SerieDisciplinaDetalhe.as_view(), name=SerieDisciplinaDetalhe.name),
     path('seriedisciplina/serie=<int:serie>/', SerieDisciplinaSerie.as_view(), name='seriedisciplina-detalhe-serie'),
-    path('seriedisciplina/disciplina=<int:disciplina>/', SerieDisciplinaDisciplina.as_view(), name='seriedisciplina-detalhe-disciplina'),
+    path('seriedisciplina/disciplina=<int:disciplina>/', SerieDisciplinaDisciplina.as_view(),
+         name='seriedisciplina-detalhe-disciplina'),
 
     path('anoletivo/', AnoLetivoList.as_view(), name=AnoLetivoList.name),
     path('anoletivo/id=<int:pk>/', AnoLetivoDetalhe.as_view(), name=AnoLetivoDetalhe.name),
 
     path('situacaoturmames/', SituacaoTurmaMesList.as_view(), name=SituacaoTurmaMesList.name),
     path('situacaoturmames/id=<int:pk>/', SituacaoTurmaMesDetalhe.as_view(), name=SituacaoTurmaMesDetalhe.name),
-path('situacaoturmames/turma=<int:turma>/', SituacaoTurmaMesTurma.as_view(), name='situacaoturmames-detalhe-turma'),
+    path('situacaoturmames/turma=<int:turma>/', SituacaoTurmaMesTurma.as_view(), name='situacaoturmames-detalhe-turma'),
 
     path('disciplinaaluno/', DisciplinaAlunoList.as_view(), name=DisciplinaAlunoList.name),
     path('disciplinaaluno/id=<int:pk>/', DisciplinaAlunoDetalhe.as_view(), name=DisciplinaAlunoDetalhe.name),
-    path('disciplinaaluno/matricula=<int:matricula>/', DisciplinaAlunoMatriculaDetalhe.as_view(), name='disciplinaaluno-matricula-detalhe'),
+    path('disciplinaaluno/matricula=<int:matricula>/', DisciplinaAlunoMatriculaDetalhe.as_view(),
+         name='disciplinaaluno-matricula-detalhe'),
 
     path('funcionario/', FuncionarioList.as_view(), name=FuncionarioList.name),
     path('funcionario/id=<int:pk>/', FuncionarioDetail.as_view(), name=FuncionarioDetail.name),
-    path('funcionario/pessoafisica=<int:pessoafisica>/', FuncionarioPessoaFisica.as_view(), name='funcionario-detalhe-pessoafisica'),
+    path('funcionario/pessoafisica=<int:pessoafisica>/', FuncionarioPessoaFisica.as_view(),
+         name='funcionario-detalhe-pessoafisica'),
 
     path('cargo/', CargoList.as_view(), name=CargoList.name),
     path('cargo/id=<int:pk>/', CargoDetalhe.as_view(), name=CargoDetalhe.name),
@@ -124,10 +129,9 @@ path('situacaoturmames/turma=<int:turma>/', SituacaoTurmaMesTurma.as_view(), nam
     path('matricula/turma=<int:turma>/', MatriculaTurma.as_view(), name='matricula-detalhe-turma'),
 
     path('alunofrequenciames/', AlunoFrequenciaMesList.as_view(), name=AlunoFrequenciaMesList.name),
-    path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name=AlunoFrequenciaMesDetail.name),
-    path('alunofrequenciames/matricula=<int:matricula>/', AlunoFrequenciaMesMatricula.as_view(), name='alunofrequenciames-detalhe-matricula'),
-
-
+    path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name="AlunoFrequenciaMesDetail"),
+    path('alunofrequenciames/matricula=<int:matricula>/', AlunoFrequenciaMesMatricula.as_view(),
+         name='alunofrequenciames-detalhe-matricula'),
 
 ]
 

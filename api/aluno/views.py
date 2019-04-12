@@ -68,6 +68,5 @@ class AlunoFrequenciaMesMatricula(APIView):
         serializer = AlunoFrequenciaMesSerializer(alnofrequencia, many=True)
         return Response(serializer.data)
 
-
 # generics.ListCreateAPIView
 # generics.RetrieveUpdateDestroyAPIView

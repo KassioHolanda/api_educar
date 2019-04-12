@@ -12,6 +12,9 @@ class Disciplina(models.Model):
         db_table = 'disciplina'
         ordering = ('id',)
 
+    def __str__(self):
+        return self.descricao
+
 
 class GradeCurso(models.Model):
     professor = models.ForeignKey('funcionario.Funcionario', on_delete=models.CASCADE,
@@ -45,36 +48,36 @@ class AnoLetivo(models.Model):
 
 
 class DisciplinaAluno(models.Model):
-    cargahoraria = models.IntegerField()
+    cargahoraria = models.IntegerField(null=True)
     statusdisciplinaaluno = models.CharField(max_length=255)
     statusatual = models.CharField(max_length=255)
     matricula = models.ForeignKey('aluno.Matricula', on_delete=models.CASCADE,
-                                  related_name='%(app_label)s_%(class)s_related', db_column='matricula_id')
+                                  related_name='%(app_label)s_%(class)s_related', db_column='matricula_id', null=True)
     seriedisciplina = models.ForeignKey('grade.SerieDisciplina', on_delete=models.CASCADE,
                                         related_name='%(app_label)s_%(class)s_related', db_column='seriedisciplina_id')
     mediaacumulada = models.DecimalField(max_digits=5, decimal_places=2)
     mesesfechadosnota = models.IntegerField()
     notaacumulada = models.DecimalField(max_digits=5, decimal_places=2)
-    datacadastroprovafinal = models.DateTimeField()
-    notaprovafinal = models.DecimalField(max_digits=5, decimal_places=2)
+    datacadastroprovafinal = models.DateTimeField(null=True)
+    notaprovafinal = models.DecimalField(max_digits=5, decimal_places=2,null=True)
     fechadoprovafinal = models.BooleanField()
-    datacadastroatualizacaoprovafinal = models.DateTimeField()
-    notaantigaprovafinal = models.DecimalField(max_digits=5, decimal_places=2)
+    datacadastroatualizacaoprovafinal = models.DateTimeField(null=True)
+    notaantigaprovafinal = models.DecimalField(max_digits=5, decimal_places=2, null=True)
 
     usuarioatualizacaoprovafinal = models.ForeignKey('pessoa.Usuario', on_delete=models.CASCADE,
                                                      related_name='%(app_label)s_%(class)s_related',
-                                                     db_column='usuarioatualizacaoprovafinal_id')
+                                                     db_column='usuarioatualizacaoprovafinal_id', null=True)
 
     class Meta:
         managed = False
         db_table = 'disciplinaaluno'
         ordering = ('id',)
 
-    def save(self, *args, **kwargs):
-        ultimoid = DisciplinaAluno.objects.all().aggregate(Max('id'))
-        self.id = ultimoid['id__max'] + 1
-        super(DisciplinaAluno, self).save()
-
+    # def save(self, *args, **kwargs):
+    #     ultimoid = DisciplinaAluno.objects.all().aggregate(Max('id'))
+    #     self.id = ultimoid['id__max'] + 1
+    #     super(DisciplinaAluno, self).save()
+    #
 
 class SerieDisciplina(models.Model):
     disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE,

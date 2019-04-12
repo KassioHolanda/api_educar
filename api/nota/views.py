@@ -19,3 +19,13 @@ class AlunoNotaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'alunonotames-detalhe'
     queryset = AlunoNotaMes.objects.all()
     serializer_class = AlunoNotaMesSerializer
+
+
+class AlunoNotaMesDetalheMatricula(APIView):
+	def get_object(self, matricula):
+		return AlunoNotaMes.objects.filter(matricula=matricula)
+
+	def get(self, request, matricula, format=None):
+		anm = self.get_object(matricula)
+		serializer = AlunoNotaMesSerializer(anm, many=True)
+		return Response(serializer.data)
