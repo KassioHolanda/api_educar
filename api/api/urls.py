@@ -30,6 +30,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('classescompletas/cpf=<path:cpf>/', PessoaFisicaCPFMostrarTodasAsClassesSerializadas.as_view(), name='pessoafisica-detail'),
+
     path('admin/', admin.site.urls),
     path('', helper.ApiRoot().as_view()),
 
@@ -39,39 +41,39 @@ urlpatterns = [
 
     path('usuario/', UsuarioList.as_view(), name=UsuarioList.name),
     path('usuario/pessoafisica=<int:pessoafisica>/', UsuarioPessoaFisica.as_view(), name='usuario-pessoafisica-detail'),
-    path('usuario/id=<int:pk>/', UsuarioDetalhe.as_view(), name='usuario-detail-id'),
+    path('usuario/id=<int:pk>/', UsuarioDetalhe.as_view(), name=UsuarioDetalhe.name),
     path('usuario/perfil=<int:perfil>/', UsuarioPerfil.as_view(), name='usuario-detail-perfil'),
 
     path('perfil/', PerfilList.as_view(), name=PerfilList.name),
-    path('perfil/id=<int:pk>/', PerfilDetalhe.as_view(), name='perfil-id-detail'),
+    path('perfil/id=<int:pk>/', PerfilDetalhe.as_view(), name=PerfilDetalhe.name),
 
     path('unidade/', UnidadeList.as_view(), name=UnidadeList.name),
-    path('unidade/id=<int:pk>/', UnidadeDetalhe.as_view(), name='unidade-id-detail'),
+    path('unidade/id=<int:pk>/', UnidadeDetalhe.as_view(), name=UnidadeDetalhe.name),
 
     path('localescola/', LocalEscolaList.as_view(), name=LocalEscolaList.name),
-    path('localescola/id=<int:pk>/', LocalEscolaDetalhe.as_view(), name='unidade-id-detail'),
+    path('localescola/id=<int:pk>/', LocalEscolaDetalhe.as_view(), name=LocalEscolaDetalhe.name),
     path('localescola/unidade=<int:unidade>/', LocalEscolaUnidade.as_view(), name='localescola-detail-unidade'),
 
     path('turma/', TurmaViewLis.as_view(), name=TurmaViewLis.name),
-    path('turma/id=<int:pk>/', TurmaDetalhe.as_view(), name='turma-detalhe-id'),
+    path('turma/id=<int:pk>/', TurmaDetalhe.as_view(), name=TurmaDetalhe.name),
     path('turma/sala=<int:sala>/', TurmaSala.as_view(), name='turma-detalhe-sala'),
     path('turma/serie=<int:serie>/', TurmaSerie.as_view(), name='turma-detalhe-serie'),
 
     path('serie/', SerieList.as_view(), name=SerieList.name),
-    path('serie/id=<int:pk>/', SerieDetalhe.as_view(), name='serie-detalhe-id'),
+    path('serie/id=<int:pk>/', SerieDetalhe.as_view(), name=SerieDetalhe.name),
 
     path('serieturma/', SerieTurmaList.as_view(), name=SerieTurmaList.name),
-    path('serieturma/id=<int:pk>/', SerieTurmaDetalhe.as_view(), name='serieturma-detalhe-id'),
+    path('serieturma/id=<int:pk>/', SerieTurmaDetalhe.as_view(), name=SerieTurmaDetalhe.name),
     path('serieturma/serie=<int:serie>/', SerieTurmaSerie.as_view(), name='serieturma-detalhe-serie'),
     path('serieturma/turma=<int:turma>/', SerieTurmaTurma.as_view(), name='serieturma-detalhe-turma'),
     path('serieturma/turma=<int:turma>/serie=<int:serie>', SerieTurmaSerieTurma.as_view(),
          name='serieturma-detalhe-turma'),
 
     path('tipoocorrencia/', TipoOcorrenciaList.as_view(), name=TipoOcorrenciaList.name),
-    path('tipoocorrencia/id=<int:pk>/', TipoOcorrenciaDetalhe.as_view(), name='tipoocorrencia-detalhe-id'),
+    path('tipoocorrencia/id=<int:pk>/', TipoOcorrenciaDetalhe.as_view(), name=TipoOcorrenciaDetalhe.name),
 
     path('ocorrencia/', OcorrenciaList.as_view(), name=OcorrenciaList.name),
-    path('ocorrencia/id=<int:pk>/', OcorrenciaDetalhe.as_view(), name='ocorrencia-detalhe-id'),
+    path('ocorrencia/id=<int:pk>/', OcorrenciaDetalhe.as_view(), name=OcorrenciaDetalhe.name),
     path('ocorrencia/aluno=<int:aluno>/', OcorrenciaDetalheAluno.as_view(), name='ocorrencia-detalhe-aluno'),
 
     path('alunonotames/', AlunoNotaMesList.as_view(), name=AlunoNotaMesList.name),
@@ -109,6 +111,8 @@ urlpatterns = [
     path('funcionario/id=<int:pk>/', FuncionarioDetail.as_view(), name=FuncionarioDetail.name),
     path('funcionario/pessoafisica=<int:pessoafisica>/', FuncionarioPessoaFisica.as_view(),
          name='funcionario-detalhe-pessoafisica'),
+    path('funcionario/cpf=<path:cpf>/', FuncionarioCPF.as_view(),
+         name='funcionario-detalhe-pessoafisica'),
 
     path('cargo/', CargoList.as_view(), name=CargoList.name),
     path('cargo/id=<int:pk>/', CargoDetalhe.as_view(), name=CargoDetalhe.name),
@@ -126,10 +130,10 @@ urlpatterns = [
 
     path('matricula/', MatriculaList.as_view(), name=MatriculaList.name),
     path('matricula/id=<int:pk>/', MatriculaDetalhe.as_view(), name=MatriculaDetalhe.name),
-    path('matricula/turma=<int:turma>/', MatriculaTurma.as_view(), name='matricula-detalhe-turma'),
+    path('matricula/turma=<int:turma>/', MatriculaTurma.as_view(), name='matricula-detalhe'),
 
     path('alunofrequenciames/', AlunoFrequenciaMesList.as_view(), name=AlunoFrequenciaMesList.name),
-    path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name="AlunoFrequenciaMesDetail"),
+    path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name=AlunoFrequenciaMesDetail.name),
     path('alunofrequenciames/matricula=<int:matricula>/', AlunoFrequenciaMesMatricula.as_view(),
          name='alunofrequenciames-detalhe-matricula'),
 

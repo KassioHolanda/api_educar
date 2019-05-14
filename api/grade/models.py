@@ -26,6 +26,10 @@ class GradeCurso(models.Model):
     disciplina = models.ForeignKey('Disciplina', on_delete=models.CASCADE,
                                    related_name='%(app_label)s_%(class)s_related', db_column='disciplina_id')
 
+    @property
+    def turmas(self):
+        return self.objects.select_related('turma').filter(turma=self.turma.id)
+
     class Meta:
         managed = False
         db_table = 'gradecurso'
@@ -59,7 +63,7 @@ class DisciplinaAluno(models.Model):
     mesesfechadosnota = models.IntegerField()
     notaacumulada = models.DecimalField(max_digits=5, decimal_places=2)
     datacadastroprovafinal = models.DateTimeField(null=True)
-    notaprovafinal = models.DecimalField(max_digits=5, decimal_places=2,null=True)
+    notaprovafinal = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     fechadoprovafinal = models.BooleanField()
     datacadastroatualizacaoprovafinal = models.DateTimeField(null=True)
     notaantigaprovafinal = models.DecimalField(max_digits=5, decimal_places=2, null=True)
@@ -78,6 +82,7 @@ class DisciplinaAluno(models.Model):
     #     self.id = ultimoid['id__max'] + 1
     #     super(DisciplinaAluno, self).save()
     #
+
 
 class SerieDisciplina(models.Model):
     disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE,

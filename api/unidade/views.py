@@ -6,8 +6,7 @@ from rest_framework import status
 from rest_framework import generics
 from rest_framework import filters, viewsets
 from unidade.models import Unidade, LocalEscola, Turma, Serie, SerieTurma
-from unidade.serializer import UnidadeSerializer, LocalEscolaSerializer, TurmaSerializer, SerieSerializer, \
-    SerieTurmaSerializer
+from unidade.serializer import *
 
 
 class UnidadeList(generics.ListAPIView):
@@ -45,7 +44,7 @@ class LocalEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
 
 
 class TurmaViewLis(generics.ListAPIView):
-    queryset = Turma.objects.all()
+    queryset = Turma.objects.filter(statusturma='CADASTRADA')
     serializer_class = TurmaSerializer
     name = 'turma-list'
 
@@ -61,14 +60,14 @@ class TurmaSala(APIView):
 
 
 class TurmaDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
     name = 'turma-detail'
+    queryset = Turma.objects.filter(statusturma='CADASTRADA')
+    serializer_class = TurmaSerializer
 
 
 class TurmaSerie(APIView):
     def get_object(self, serie):
-        return Turma.objects.filter(serie=serie)
+        return Turma.objects.filter(serie=serie).filter(statusturma='CADASTRADA')
 
     def get(self, request, serie, format=None):
         turma = self.get_object(serie)

@@ -2,7 +2,10 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 from django.shortcuts import render
 from rest_framework import filters, viewsets
+
+from helper.serializer import *
 from pessoa.models import PessoaFisica, Usuario, Perfil
+from funcionario.models import Funcionario
 from django.shortcuts import get_object_or_404
 from pessoa.serializer import PessoaFisicaSerializer, UsuarioSerializer, PerfilSerializer
 from rest_framework.response import Response
@@ -30,19 +33,37 @@ class PessoaFisicaCPF(APIView):
 
     def get(self, request, cpf, format=None):
         pessoa = self.get_object(cpf)
+        serializer_context = {
+            'request': request,
+        }
         serializer = PessoaFisicaSerializer(pessoa, many=True)
+        return Response(serializer.data)
+
+
+class PessoaFisicaCPFMostrarTodasAsClassesSerializadas(APIView):
+    def get_object(self, cpf):
+        p = PessoaFisica.objects.get(cpf=cpf)
+        return Funcionario.objects.select_related('pessoafisica').filter(pessoafisica=p)
+
+    def get(self, request, cpf, format=None):
+        pessoa = self.get_object(cpf)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = FuncionarioSerializerHelper(pessoa, many=True, context=serializer_context)
         return Response(serializer.data)
 
 
 class UsuarioList(generics.ListAPIView):
     name = 'usuario-list'
-    queryset = Usuario.objects.all()
+    queryset = Usuario.objects.select_related('perfil', 'pessoafisica').all()
+    # queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
 
 
 class UsuarioPessoaFisica(APIView):
     def get_object(self, pessoafisica):
-        return Usuario.objects.filter(pessoafisica=pessoafisica)
+        return Usuario.objects.select_related('pessoafisica').filter(pessoafisica=pessoafisica)
 
     def get(self, request, pessoafisica, format=None):
         usuario = self.get_object(pessoafisica)

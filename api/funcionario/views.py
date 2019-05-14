@@ -18,25 +18,34 @@ from rest_framework import generics
 
 class FuncionarioList(generics.ListCreateAPIView):
     name = 'funcionario-list'
-    queryset = Funcionario.objects.all()
-    serializer_class = FuncionarioSerializer
+    queryset = Funcionario.objects.filter(cargo=5)
+    serializer_class = FuncionarioSerializerAjuda
 
 
 class FuncionarioDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'funcionario-detail'
     queryset = Funcionario.objects.all()
-    serializer_class = FuncionarioSerializer
+    serializer_class = FuncionarioSerializerAjuda
 
 
 class FuncionarioPessoaFisica(APIView):
     def get_object(self, pessoafisica):
-        return Funcionario.objects.filter(pessoafisica=pessoafisica)
+        return Funcionario.objects.filter(pessoafisica=pessoafisica, cargo=5)
 
     def get(self, request, pessoafisica, format=None):
         funcionario = self.get_object(pessoafisica)
         serializer = FuncionarioSerializer(funcionario, many=True)
         return Response(serializer.data)
 
+class FuncionarioCPF(APIView):
+    def get_object(self, cpf):
+        pessoa = PessoaFisica.objects.get(cpf=cpf)
+        return Funcionario.objects.filter(pessoafisica=pessoa, cargo=5)
+
+    def get(self, request, cpf, format=None):
+        funcionario = self.get_object(cpf)
+        serializer = FuncionarioSerializer(funcionario, many=True)
+        return Response(serializer.data)
 
 
 class CargoList(generics.ListCreateAPIView):
@@ -59,7 +68,7 @@ class FuncionarioEscolaLista(generics.ListCreateAPIView):
 
 class FuncionarioEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'funcionarioescola-detail'
-    queryset = FuncionarioEscola.objects.all()
+    queryset = FuncionarioEscola.objects.select_related('funcionario', 'unidade').all()
     serializer_class = FuncionarioEscolaSerializer
 
 

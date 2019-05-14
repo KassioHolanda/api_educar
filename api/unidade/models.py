@@ -2,10 +2,18 @@ from django.db import models
 
 
 # Create your models here.
+from aluno.models import Matricula
+from grade.models import GradeCurso
+
+
 class Unidade(models.Model):
     abreviacao = models.CharField('abreviacao', max_length=255)
     cnpj = models.CharField('cnpj', max_length=255)
     nome = models.CharField('nome', max_length=255)
+
+    @property
+    def locais_escola(self):
+        return LocalEscola.objects.filter(unidade=self)
 
     def __str__(self):
         return self.nome
@@ -20,6 +28,10 @@ class LocalEscola(models.Model):
     descricao = models.CharField('descricao', max_length=255)
     unidade = models.ForeignKey('Unidade', on_delete=models.CASCADE,
                                 related_name='%(app_label)s_%(class)s_related', db_column='unidade_id')
+
+    @property
+    def turmas(self):
+        return Turma.objects.filter(sala=self)
 
     class Meta:
         managed = False
@@ -39,6 +51,12 @@ class Turma(models.Model):
                               db_column='serie_id')
     nivel = models.CharField('nivel', max_length=255)
     statusturma = models.CharField(max_length=255)
+
+    def matriculas(self):
+        return Matricula.objects.filter(turma=self)
+
+    def grade_curso(self):
+        return GradeCurso.objects.filter(turma=self)
 
     def __str__(self):
         return self.descricao

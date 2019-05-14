@@ -3,31 +3,30 @@ from rest_framework import filters, viewsets
 
 # Create your views here.
 from aluno.models import *
-from aluno.serializer import *
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 # Create your views here.
 from rest_framework import generics
+from aluno.serializer import *
 
 
 class AlunoList(generics.ListCreateAPIView):
     name = 'aluno-list'
-    queryset = Aluno.objects.all()
+    queryset = Aluno.objects.select_related('pessoafisica').all()
     serializer_class = AlunoSerializer
 
 
 class AlunoDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'aluno-detail'
-    queryset = Aluno.objects.all()
+    queryset = Aluno.objects.select_related('pessoafisica').all()
     serializer_class = AlunoSerializer
 
 
 class MatriculaList(generics.ListCreateAPIView):
     name = 'matricula-list'
     # recuperando apenas usuarios com matricula em andamento
-    queryset = Matricula.objects.filter(statusmatricula='EM_ANDAMENTO')
+    queryset = Matricula.objects.select_related('turma', 'aluno', 'serie').filter(statusmatricula='EM_ANDAMENTO')
     serializer_class = MatriculaSerializer
 
 

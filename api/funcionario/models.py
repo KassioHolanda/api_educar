@@ -1,5 +1,7 @@
 from django.db import models
 
+from grade.models import *
+
 
 class Funcionario(models.Model):
     pessoafisica = models.ForeignKey('pessoa.PessoaFisica', null=False, on_delete=models.CASCADE,
@@ -14,6 +16,14 @@ class Funcionario(models.Model):
 
     def __str__(self):
         return self.pessoafisica.nome
+
+    @property
+    def funcionario_escolas(self):
+        return FuncionarioEscola.objects.filter(funcionario=self)
+
+    @property
+    def grade_curso(self):
+        return GradeCurso.objects.filter(professor=self)
 
     class Meta:
         managed = False
@@ -40,6 +50,10 @@ class FuncionarioEscola(models.Model):
                                 related_name='%(app_label)s_%(class)s_related', db_column='unidade_id')
     funcionario = models.ForeignKey('Funcionario', on_delete=models.CASCADE,
                                     related_name='%(app_label)s_%(class)s_related', db_column='funcionario_id')
+
+    @property
+    def grade_curso(self):
+        return GradeCurso.objects.filter(professor=self.funcionario)
 
     def __str__(self):
         return self.unidade.nome + ' - ' + self.funcionario.pessoafisica.nome

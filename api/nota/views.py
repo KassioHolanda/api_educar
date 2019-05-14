@@ -11,7 +11,8 @@ from nota.serializer import AlunoNotaMesSerializer
 
 class AlunoNotaMesList(generics.ListCreateAPIView):
     name = 'alunonotames-list'
-    queryset = AlunoNotaMes.objects.all()
+    queryset = AlunoNotaMes.objects.select_related('bimestre', 'disciplinaaluno', 'anoletivo', 'matricula', 'unidade',
+                                                   'disciplina', 'usuario').all()
     serializer_class = AlunoNotaMesSerializer
 
 
@@ -22,10 +23,10 @@ class AlunoNotaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AlunoNotaMesDetalheMatricula(APIView):
-	def get_object(self, matricula):
-		return AlunoNotaMes.objects.filter(matricula=matricula)
+    def get_object(self, matricula):
+        return AlunoNotaMes.objects.filter(matricula=matricula)
 
-	def get(self, request, matricula, format=None):
-		anm = self.get_object(matricula)
-		serializer = AlunoNotaMesSerializer(anm, many=True)
-		return Response(serializer.data)
+    def get(self, request, matricula, format=None):
+        anm = self.get_object(matricula)
+        serializer = AlunoNotaMesSerializer(anm, many=True)
+        return Response(serializer.data)

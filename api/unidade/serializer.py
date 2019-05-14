@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
+from aluno.serializer import MatriculaSerializer
 from unidade.models import Unidade, LocalEscola, Turma, Serie, SerieTurma
+from grade.serializer import *
 
 
 class UnidadeSerializer(serializers.HyperlinkedModelSerializer):
@@ -10,15 +12,11 @@ class UnidadeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class LocalEscolaSerializer(serializers.HyperlinkedModelSerializer):
+    unidade = UnidadeSerializer(many=False)
+
     class Meta:
         model = LocalEscola
         fields = 'id', 'descricao', 'unidade'
-
-
-class TurmaSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Turma
-        fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma'
 
 
 class SerieSerializer(serializers.HyperlinkedModelSerializer):
@@ -27,7 +25,21 @@ class SerieSerializer(serializers.HyperlinkedModelSerializer):
         fields = 'id', 'descricao', 'nivel'
 
 
+class TurmaSerializer(serializers.HyperlinkedModelSerializer):
+    sala = LocalEscolaSerializer(many=False)
+    anoletivo = AnoLetivoSerializer(many=False)
+    serie = SerieSerializer(many=False)
+    matriculas = MatriculaSerializer(many=True)
+
+    class Meta:
+        model = Turma
+        fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma', 'matriculas'
+
+
 class SerieTurmaSerializer(serializers.HyperlinkedModelSerializer):
+    serie = SerieSerializer(many=False)
+    turma = TurmaSerializer(many=False)
+
     class Meta:
         model = SerieTurma
         fields = 'id', 'serie', 'turma'

@@ -1,8 +1,11 @@
 from django.db import models
 from django.db.models import Avg, Max
 
-
 # Create your models here.
+from grade.models import DisciplinaAluno
+from nota.models import AlunoNotaMes
+
+
 class Aluno(models.Model):
     pessoafisica = models.ForeignKey('pessoa.PessoaFisica', null=False, on_delete=models.CASCADE,
                                      related_name='%(app_label)s_%(class)s_related', db_column='pessoafisica_id')
@@ -28,8 +31,17 @@ class Matricula(models.Model):
     serie = models.ForeignKey('unidade.Serie', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
                               db_column='serie_id')
 
-    anoletivo = models.ForeignKey('grade.AnoLetivo', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
-                              db_column='anoletivo_id')
+    anoletivo = models.ForeignKey('grade.AnoLetivo', on_delete=models.CASCADE,
+                                  related_name='%(app_label)s_%(class)s_related',
+                                  db_column='anoletivo_id')
+
+    @property
+    def todas_disciplinas_aluno(self):
+        return DisciplinaAluno.objects.filter(matricula=self)
+
+    @property
+    def todas_alunos_notas_mes(self):
+        return AlunoNotaMes.objects.filter(matricula=self)
 
     def __str__(self):
         return self.statusmatricula
@@ -46,18 +58,18 @@ class AlunoFrequenciaMes(models.Model):
 
     matricula = models.ForeignKey('Matricula', on_delete=models.CASCADE, related_name='%(app_label)s_%(class)s_related',
                                   db_column='matricula_id')
-    
+
     bimestre = models.ForeignKey('bimestre.Bimestre', on_delete=models.CASCADE,
-                                 related_name='%(app_label)s_%(class)s_related', 
+                                 related_name='%(app_label)s_%(class)s_related',
                                  db_column='bimestre_id')
 
-    disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE, null=True, 
-                                 related_name='%(app_label)s_%(class)s_related',
-                                 db_column='disciplina_id')
+    disciplina = models.ForeignKey('grade.Disciplina', on_delete=models.CASCADE, null=True,
+                                   related_name='%(app_label)s_%(class)s_related',
+                                   db_column='disciplina_id')
 
     disciplinaaluno = models.ForeignKey('grade.DisciplinaAluno', on_delete=models.CASCADE,
-                                 related_name='%(app_label)s_%(class)s_related', 
-                                 db_column='disciplinaaluno_id')
+                                        related_name='%(app_label)s_%(class)s_related',
+                                        db_column='disciplinaaluno_id')
 
     class Meta:
         managed = False
