@@ -32,13 +32,19 @@ class MatriculaList(generics.ListCreateAPIView):
 
 class MatriculaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'matricula-detail'
-    queryset = Matricula.objects.all()
+    queryset = Matricula.objects.select_related('turma', 'aluno', 'serie').all()
     serializer_class = MatriculaSerializer
+
+
+class MatriculaSerializarCompleta(generics.RetrieveAPIView):
+    name = 'matricula-detail'
+    queryset = Matricula.objects.select_related('turma', 'aluno', 'serie').all()
+    serializer_class = MatriculaSerializacaoAlunoFrequenciaMesEAlunoNotaMes
 
 
 class MatriculaTurma(APIView):
     def get_object(self, turma):
-        return Matricula.objects.filter(turma=turma)
+        return Matricula.objects.select_related('turma', 'aluno', 'serie').filter(turma=turma)
 
     def get(self, request, turma, format=None):
         matricula = self.get_object(turma)
@@ -48,19 +54,20 @@ class MatriculaTurma(APIView):
 
 class AlunoFrequenciaMesList(generics.ListCreateAPIView):
     name = 'alunofrequenciames-list'
-    queryset = AlunoFrequenciaMes.objects.all()
-    serializer_class = AlunoFrequenciaMesSerializer
+    queryset = AlunoFrequenciaMes.objects.select_related('matricula', 'bimestre', 'disciplina', 'disciplinaaluno').all()
+    serializer_class = AlunoFrequenciaMesSerializerPost
 
 
 class AlunoFrequenciaMesDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'alunofrequenciames-detail'
-    queryset = AlunoFrequenciaMes.objects.all()
-    serializer_class = AlunoFrequenciaMesSerializer
+    queryset = AlunoFrequenciaMes.objects.select_related('matricula', 'bimestre', 'disciplina', 'disciplinaaluno').all()
+    serializer_class = AlunoFrequenciaMesSerializerPost
 
 
 class AlunoFrequenciaMesMatricula(APIView):
     def get_object(self, matricula):
-        return AlunoFrequenciaMes.objects.filter(matricula=matricula)
+        return AlunoFrequenciaMes.objects.select_related('matricula', 'bimestre', 'disciplina',
+                                                         'disciplinaaluno').filter(matricula=matricula)
 
     def get(self, request, matricula, format=None):
         alnofrequencia = self.get_object(matricula)

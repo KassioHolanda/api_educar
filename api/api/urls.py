@@ -30,7 +30,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+
+    # SERIALIZAÇÕES COMPLETAS
     path('classescompletas/cpf=<path:cpf>/', PessoaFisicaCPFMostrarTodasAsClassesSerializadas.as_view(), name='pessoafisica-detail'),
+    path('turmaSerializadaCompleta/id=<int:pk>/', TurmaDetalheSerializado.as_view(), name=TurmaDetalheSerializado.name),
+    path('matriculaSerializadaCompleta/id=<int:pk>/', MatriculaSerializarCompleta.as_view(), name=MatriculaSerializarCompleta.name),
 
     path('admin/', admin.site.urls),
     path('', helper.ApiRoot().as_view()),
@@ -54,7 +58,7 @@ urlpatterns = [
     path('localescola/id=<int:pk>/', LocalEscolaDetalhe.as_view(), name=LocalEscolaDetalhe.name),
     path('localescola/unidade=<int:unidade>/', LocalEscolaUnidade.as_view(), name='localescola-detail-unidade'),
 
-    path('turma/', TurmaViewLis.as_view(), name=TurmaViewLis.name),
+    path('turma/', TurmaViewListSimples.as_view(), name=TurmaViewListSimples.name),
     path('turma/id=<int:pk>/', TurmaDetalhe.as_view(), name=TurmaDetalhe.name),
     path('turma/sala=<int:sala>/', TurmaSala.as_view(), name='turma-detalhe-sala'),
     path('turma/serie=<int:serie>/', TurmaSerie.as_view(), name='turma-detalhe-serie'),

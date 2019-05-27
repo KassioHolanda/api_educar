@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 from aluno.models import Matricula
-from grade.models import GradeCurso
+from grade.models import GradeCurso, SituacaoTurmaMes
 
 
 class Unidade(models.Model):
@@ -57,6 +57,9 @@ class Turma(models.Model):
 
     def grade_curso(self):
         return GradeCurso.objects.filter(turma=self)
+
+    def situacao_turma_mes(self):
+        return SituacaoTurmaMes.objects.filter(turma=self)
 
     def __str__(self):
         return self.descricao

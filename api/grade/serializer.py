@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from aluno.models import Matricula
+from bimestre.serializer import BimestreSerializer
 from grade.models import *
 from unidade.models import Serie, Turma
 
@@ -30,7 +31,7 @@ class SerieDisciplinaSerializer(serializers.HyperlinkedModelSerializer):
 class AnoLetivoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = AnoLetivo
-        fields = 'id', 'datafinal', 'datainicio', 'fechadonota'
+        fields = 'id', 'descricao', 'datafinal', 'datainicio', 'fechadonota'
 
 
 class TurmaSerializer(serializers.HyperlinkedModelSerializer):
@@ -81,7 +82,36 @@ class DisciplinaAlunoSerializer(serializers.HyperlinkedModelSerializer):
                   'usuarioatualizacaoprovafinal')
 
 
+# UTILIZADO PARA FAZER AS REQUISICOES
+class DisciplinaAlunoSerializerPost(serializers.ModelSerializer):
+    class Meta:
+        model = DisciplinaAluno
+        fields = ('id',
+                  'cargahoraria',
+                  'statusdisciplinaaluno',
+                  'statusatual',
+                  'matricula',
+                  'seriedisciplina',
+                  'mediaacumulada',
+                  'mesesfechadosnota',
+                  'notaacumulada',
+                  'datacadastroprovafinal',
+                  'notaprovafinal',
+                  'fechadoprovafinal',
+                  'datacadastroatualizacaoprovafinal',
+                  'notaantigaprovafinal',
+                  'usuarioatualizacaoprovafinal')
+
+
 class SituacaoTurmaMesSerializer(serializers.HyperlinkedModelSerializer):
+    bimestre = BimestreSerializer(many=False)
     class Meta:
         model = SituacaoTurmaMes
-        fields = 'id', 'datahora', 'status', 'turma', 'quantidadeaprovados', 'quantidadereprovados', 'bimestre'
+        fields = 'id', 'datahora', 'status', 'quantidadeaproados', 'quantidadereprovados', 'bimestre'
+
+
+# utilizado para fazer as requisicoes
+class SituacaoTurmaMesSerializerPost(serializers.ModelSerializer):
+    class Meta:
+        model = SituacaoTurmaMes
+        fields = 'id', 'datahora', 'status', 'quantidadeaproados', 'quantidadereprovados', 'bimestre', 'turma'

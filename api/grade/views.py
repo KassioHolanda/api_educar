@@ -1,14 +1,12 @@
-from django.shortcuts import render
-from rest_framework import filters, viewsets
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 # Create your views here.
 from rest_framework import generics
 # Create your views here.
-from grade.models import GradeCurso, Disciplina, SerieDisciplina, AnoLetivo, DisciplinaAluno, SituacaoTurmaMes
-from grade.serializer import GradeCursoSerializer, DisciplinaSerializer, SerieDisciplinaSerializer, AnoLetivoSerializer, \
-    DisciplinaAlunoSerializer, SituacaoTurmaMesSerializer
+from grade.models import *
+from grade.serializer import *
 
 
 class DisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
@@ -31,7 +29,8 @@ class GradeCursolist(generics.ListCreateAPIView):
 
 class GradeCursoProfessor(APIView):
     def get_object(self, professor):
-        return GradeCurso.objects.filter(professor=professor)
+        return GradeCurso.objects.select_related('professor', 'seriedisciplina', 'turma', 'disciplina').filter(
+            professor=professor)
 
     def get(self, request, professor, format=None):
         grade = self.get_object(professor)
@@ -41,7 +40,8 @@ class GradeCursoProfessor(APIView):
 
 class GradeCursoProfessorTurma(APIView):
     def get_object(self, professor, turma):
-        return GradeCurso.objects.filter(professor=professor, turma=turma)
+        return GradeCurso.objects.select_related('professor', 'seriedisciplina', 'turma', 'disciplina').filter(
+            professor=professor, turma=turma)
 
     def get(self, request, professor, turma, format=None):
         grade = self.get_object(professor, turma)
@@ -55,7 +55,7 @@ class GradeCursoProfessorTurma(APIView):
 
 class GradeCursoDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'gradecurso-detail'
-    queryset = GradeCurso.objects.all()
+    queryset = GradeCurso.objects.select_related('professor', 'seriedisciplina', 'turma', 'disciplina').all()
     serializer_class = GradeCursoSerializer
 
 
@@ -67,7 +67,7 @@ class SerieDisciplinaList(generics.ListCreateAPIView):
 
 class SerieDisciplinaSerie(APIView):
     def get_object(self, serie):
-        return SerieDisciplina.objects.filter(serie=serie)
+        return SerieDisciplina.objects.select_related('serie', 'disciplina').filter(serie=serie)
 
     def get(self, request, serie, format=None):
         serie = self.get_object(serie)
@@ -93,7 +93,8 @@ class SerieDisciplinaDisciplina(APIView):
 
 class DisciplinaAlunoMatriculaDetalhe(APIView):
     def get_object(self, matricula):
-        return DisciplinaAluno.objects.filter(matricula=matricula)
+        return DisciplinaAluno.objects.select_related('matricula', 'seriedisciplina',
+                                                      'usuarioatualizacaoprovafinal').filter(matricula=matricula)
 
     def get(self, request, matricula, format=None):
         da = self.get_object(matricula)
@@ -123,32 +124,38 @@ class AnoLetivoDetalhe(generics.RetrieveUpdateDestroyAPIView):
 
 
 class DisciplinaAlunoList(generics.ListCreateAPIView):
-    queryset = DisciplinaAluno.objects.all()
-    serializer_class = DisciplinaAlunoSerializer
+    queryset = DisciplinaAluno.objects.select_related('matricula', 'seriedisciplina',
+                                                      'usuarioatualizacaoprovafinal').all()
+    serializer_class = DisciplinaAlunoSerializerPost
     name = 'disciplinaaluno-list'
 
 
 class DisciplinaAlunoDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    queryset = DisciplinaAluno.objects.all()
-    serializer_class = DisciplinaAlunoSerializer
+    queryset = DisciplinaAluno.objects.select_related('matricula', 'seriedisciplina',
+                                                      'usuarioatualizacaoprovafinal').all()
+    serializer_class = DisciplinaAlunoSerializerPost
     name = 'disciplinaaluno-detail'
 
 
 class SituacaoTurmaMesList(generics.ListCreateAPIView):
-    queryset = SituacaoTurmaMes.objects.all()
-    serializer_class = SituacaoTurmaMesSerializer
+    queryset = SituacaoTurmaMes.objects.select_related('turma', 'bimestre').all()
+
+    serializer_class = SituacaoTurmaMesSerializerPost
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('status', 'turma', )
+
     name = 'situacaoturmames-list'
 
 
 class SituacaoTurmaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
-    queryset = SituacaoTurmaMes.objects.all()
-    serializer_class = SituacaoTurmaMesSerializer
+    queryset = SituacaoTurmaMes.objects.select_related('turma', 'bimestre').all()
+    serializer_class = SituacaoTurmaMesSerializerPost
     name = 'situacaoturmames-detail'
 
 
 class SituacaoTurmaMesTurma(APIView):
     def get_object(self, turma):
-        return SituacaoTurmaMes.objects.filter(turma=turma)
+        return SituacaoTurmaMes.objects.select_related('turma', 'bimestre').filter(turma=turma)
 
     def get(self, request, turma, format=None):
         da = self.get_object(turma)

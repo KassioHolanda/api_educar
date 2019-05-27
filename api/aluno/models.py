@@ -4,6 +4,7 @@ from django.db.models import Avg, Max
 # Create your models here.
 from grade.models import DisciplinaAluno
 from nota.models import AlunoNotaMes
+from ocorrencia.models import Ocorrencia
 
 
 class Aluno(models.Model):
@@ -34,6 +35,18 @@ class Matricula(models.Model):
     anoletivo = models.ForeignKey('grade.AnoLetivo', on_delete=models.CASCADE,
                                   related_name='%(app_label)s_%(class)s_related',
                                   db_column='anoletivo_id')
+
+    @property
+    def aluno_frequencia_mes(self):
+        return AlunoFrequenciaMes.objects.filter(matricula=self)
+
+    @property
+    def ocorrencias(self):
+        return Ocorrencia.objects.filter(matriculaaluno=self)
+
+    @property
+    def aluno_nota_mes(self):
+        return AlunoNotaMes.objects.filter(matricula=self)
 
     @property
     def todas_disciplinas_aluno(self):

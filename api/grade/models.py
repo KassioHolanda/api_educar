@@ -48,7 +48,7 @@ class AnoLetivo(models.Model):
     class Meta:
         managed = False
         db_table = 'anoletivo'
-        ordering = ('id',)
+        ordering = ('-id',)
 
 
 class DisciplinaAluno(models.Model):
@@ -102,8 +102,8 @@ class SituacaoTurmaMes(models.Model):
     turma = models.ForeignKey('unidade.Turma', on_delete=models.CASCADE,
                               related_name='%(app_label)s_%(class)s_related',
                               db_column='turma_id')
-    quantidadeaproados = models.IntegerField()
-    quantidadereprovados = models.IntegerField()
+    quantidadeaproados = models.IntegerField(null=True)
+    quantidadereprovados = models.IntegerField(null=True)
     bimestre = models.ForeignKey('bimestre.Bimestre', on_delete=models.CASCADE,
                                  related_name='%(app_label)s_%(class)s_related',
                                  db_column='bimestre_id')

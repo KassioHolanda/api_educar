@@ -25,17 +25,6 @@ class SerieSerializer(serializers.HyperlinkedModelSerializer):
         fields = 'id', 'descricao', 'nivel'
 
 
-class TurmaSerializer(serializers.HyperlinkedModelSerializer):
-    sala = LocalEscolaSerializer(many=False)
-    anoletivo = AnoLetivoSerializer(many=False)
-    serie = SerieSerializer(many=False)
-    matriculas = MatriculaSerializer(many=True)
-
-    class Meta:
-        model = Turma
-        fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma', 'matriculas'
-
-
 class SerieTurmaSerializer(serializers.HyperlinkedModelSerializer):
     serie = SerieSerializer(many=False)
     turma = TurmaSerializer(many=False)
@@ -43,3 +32,30 @@ class SerieTurmaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = SerieTurma
         fields = 'id', 'serie', 'turma'
+
+
+class TurmaSerializer(serializers.HyperlinkedModelSerializer):
+    sala = LocalEscolaSerializer(many=False)
+    anoletivo = AnoLetivoSerializer(many=False)
+    serie = SerieSerializer(many=False)
+    matriculas = MatriculaSerializer(many=True)
+    situacao_turma_mes = SituacaoTurmaMesSerializer(many=True)
+
+    class Meta:
+        model = Turma
+        fields = ('id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma',
+                  'matriculas',
+                  'situacao_turma_mes'
+                  )
+
+
+class TurmaSerializerSimplificada(serializers.HyperlinkedModelSerializer):
+    sala = LocalEscolaSerializer(many=False)
+    anoletivo = AnoLetivoSerializer(many=False)
+    serie = SerieSerializer(many=False)
+    # matriculas = MatriculaSerializer(many=True)
+
+    class Meta:
+        model = Turma
+        fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma',
+

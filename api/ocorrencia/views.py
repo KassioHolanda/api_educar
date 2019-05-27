@@ -26,13 +26,13 @@ class TipoOcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
 class OcorrenciaList(generics.ListCreateAPIView):
     name = 'ocorrencia-list'
     queryset = Ocorrencia.objects.all()
-    serializer_class = OcorrenciaSerializer
+    serializer_class = OcorrenciaSerializerPost
 
 
 class OcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'ocorrencia-detail'
     queryset = Ocorrencia.objects.all()
-    serializer_class = OcorrenciaSerializer
+    serializer_class = OcorrenciaSerializerPost
 
 
 class OcorrenciaDetalheAluno(APIView):

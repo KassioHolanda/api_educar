@@ -41,6 +41,7 @@ class PessoaFisicaCPF(APIView):
 
 
 class PessoaFisicaCPFMostrarTodasAsClassesSerializadas(APIView):
+    name = 'pessoafisica-list'
     def get_object(self, cpf):
         p = PessoaFisica.objects.get(cpf=cpf)
         return Funcionario.objects.select_related('pessoafisica').filter(pessoafisica=p)

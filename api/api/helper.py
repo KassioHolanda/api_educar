@@ -16,6 +16,7 @@ class ApiRoot(generics.GenericAPIView):
 
     def get(self, request, *args, **kwargs):
         return Response({
+            # 'MatriculaSerializacaoAlunoFrequenciaMesEAlunoNotaMes' : reverse(PessoaFisicaCPFMostrarTodasAsClassesSerializadas.name, request=request),
             'Aluno': reverse(AlunoList.name, request=request),
             'Aluno Frequencia Mes': reverse(AlunoFrequenciaMesList.name, request=request),
             'Aluno Nota Mes': reverse(AlunoNotaMesList.name, request=request),

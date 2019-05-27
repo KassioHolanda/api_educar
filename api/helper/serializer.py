@@ -30,17 +30,25 @@ class GradeCursoSerializerHelper(serializers.HyperlinkedModelSerializer):
                   'disciplina'
                   )
 
+class SituacaoTurmaMesSerializerHelper(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = SituacaoTurmaMes
+        fields = 'id', 'datahora', 'status', 'quantidadeaprovados', 'quantidadereprovados', 'bimestre'
+
 
 class TurmaSerializerHelper(serializers.HyperlinkedModelSerializer):
     # sala = LocalEscolaSerializerHelper(many=False)
     anoletivo = AnoLetivoSerializerHelper(many=False)
     serie = SerieSerializer(many=False)
     grade_curso = GradeCursoSerializerHelper(many=True)
-    matriculas = MatriculaSerializer(many=True)
+    # matriculas = MatriculaSerializer(many=True)
 
     class Meta:
         model = Turma
-        fields = 'id', 'descricao', 'turno', 'anoletivo', 'nivel', 'statusturma', 'anoletivo', 'serie', 'grade_curso', 'matriculas'
+        fields = ('id', 'descricao', 'turno', 'anoletivo', 'nivel', 'statusturma', 'anoletivo', 'serie', 'grade_curso',
+                 # 'matriculas',
+                 #  'situacao_turma_mes'
+                  )
 
 
 class LocalEscolaSerializerHelper(serializers.HyperlinkedModelSerializer):
@@ -198,9 +206,3 @@ class DisciplinaAlunoSerializerHelper(serializers.HyperlinkedModelSerializer):
                   'datacadastroatualizacaoprovafinal',
                   'notaantigaprovafinal',
                   'usuarioatualizacaoprovafinal')
-
-
-class SituacaoTurmaMesSerializerHelper(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = SituacaoTurmaMes
-        fields = 'id', 'datahora', 'status', 'turma', 'quantidadeaprovados', 'quantidadereprovados', 'bimestre'

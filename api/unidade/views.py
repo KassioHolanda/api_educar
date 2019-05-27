@@ -49,17 +49,28 @@ class TurmaViewLis(generics.ListAPIView):
     name = 'turma-list'
 
 
+class TurmaViewListSimples(generics.ListAPIView):
+    queryset = Turma.objects.filter(statusturma='CADASTRADA')
+    serializer_class = TurmaSerializerSimplificada
+    name = 'turma-list'
+
+
 class TurmaSala(APIView):
     def get_object(self, sala):
         return Turma.objects.filter(sala=sala).filter(statusturma='CADASTRADA').filter(nivel='FUNDAMENTAL')
 
     def get(self, request, sala, format=None):
         turma = self.get_object(sala)
-        serializer = TurmaSerializer(turma, many=True)
+        serializer = TurmaSerializerSimplificada(turma, many=True)
         return Response(serializer.data)
 
 
 class TurmaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+    name = 'turma-detail'
+    queryset = Turma.objects.filter(statusturma='CADASTRADA')
+    serializer_class = TurmaSerializer
+
+class TurmaDetalheSerializado(generics.RetrieveUpdateDestroyAPIView):
     name = 'turma-detail'
     queryset = Turma.objects.filter(statusturma='CADASTRADA')
     serializer_class = TurmaSerializer
