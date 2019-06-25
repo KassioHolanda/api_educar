@@ -11,26 +11,26 @@ from rest_framework import generics
 from aluno.serializer import *
 
 
-class AlunoList(generics.ListCreateAPIView):
+class AlunoList(generics.ListAPIView):
     name = 'aluno-list'
     queryset = Aluno.objects.select_related('pessoafisica').all()
     serializer_class = AlunoSerializer
 
 
-class AlunoDetail(generics.RetrieveUpdateDestroyAPIView):
+class AlunoDetail(generics.RetrieveAPIView):
     name = 'aluno-detail'
     queryset = Aluno.objects.select_related('pessoafisica').all()
     serializer_class = AlunoSerializer
 
 
-class MatriculaList(generics.ListCreateAPIView):
+class MatriculaList(generics.ListAPIView):
     name = 'matricula-list'
     # recuperando apenas usuarios com matricula em andamento
     queryset = Matricula.objects.select_related('turma', 'aluno', 'serie').filter(statusmatricula='EM_ANDAMENTO')
     serializer_class = MatriculaSerializer
 
 
-class MatriculaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class MatriculaDetalhe(generics.RetrieveAPIView):
     name = 'matricula-detail'
     queryset = Matricula.objects.select_related('turma', 'aluno', 'serie').all()
     serializer_class = MatriculaSerializer
