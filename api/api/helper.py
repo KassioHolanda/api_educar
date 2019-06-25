@@ -25,6 +25,7 @@ class ApiRoot(generics.GenericAPIView):
             'Cargo': reverse(CargoList.name, request=request),
             'Disciplina': reverse(DisciplinaList.name, request=request),
             'Disciplina Aluno': reverse(DisciplinaAlunoList.name, request=request),
+            'Fechamento Unidade': reverse(FechamentoUnidadeList.name, request=request),
             'Funcionario': reverse(FuncionarioList.name, request=request),
             'Funcionario Escola': reverse(FuncionarioEscolaLista.name, request=request),
             'Grade Curso': reverse(GradeCursolist.name, request=request),

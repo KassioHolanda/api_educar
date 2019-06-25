@@ -32,9 +32,11 @@ from django.conf import settings
 urlpatterns = [
 
     # SERIALIZAÇÕES COMPLETAS
-    path('classescompletas/cpf=<path:cpf>/', PessoaFisicaCPFMostrarTodasAsClassesSerializadas.as_view(), name='pessoafisica-detail'),
+    path('classescompletas/cpf=<path:cpf>/', PessoaFisicaCPFMostrarTodasAsClassesSerializadas.as_view(),
+         name='pessoafisica-detail'),
     path('turmaSerializadaCompleta/id=<int:pk>/', TurmaDetalheSerializado.as_view(), name=TurmaDetalheSerializado.name),
-    path('matriculaSerializadaCompleta/id=<int:pk>/', MatriculaSerializarCompleta.as_view(), name=MatriculaSerializarCompleta.name),
+    path('matriculaSerializadaCompleta/id=<int:pk>/', MatriculaSerializarCompleta.as_view(),
+         name=MatriculaSerializarCompleta.name),
 
     path('admin/', admin.site.urls),
     path('', helper.ApiRoot().as_view()),
@@ -77,6 +79,7 @@ urlpatterns = [
     path('tipoocorrencia/id=<int:pk>/', TipoOcorrenciaDetalhe.as_view(), name=TipoOcorrenciaDetalhe.name),
 
     path('ocorrencia/', OcorrenciaList.as_view(), name=OcorrenciaList.name),
+    path('ocorrenciapost/', OcorrenciaListPost.as_view(), name=OcorrenciaListPost.name),
     path('ocorrencia/id=<int:pk>/', OcorrenciaDetalhe.as_view(), name=OcorrenciaDetalhe.name),
     path('ocorrencia/aluno=<int:aluno>/', OcorrenciaDetalheAluno.as_view(), name='ocorrencia-detalhe-aluno'),
 
@@ -140,6 +143,9 @@ urlpatterns = [
     path('alunofrequenciames/id=<int:pk>/', AlunoFrequenciaMesDetail.as_view(), name=AlunoFrequenciaMesDetail.name),
     path('alunofrequenciames/matricula=<int:matricula>/', AlunoFrequenciaMesMatricula.as_view(),
          name='alunofrequenciames-detalhe-matricula'),
+
+    path('fechamentounidade/', FechamentoUnidadeList.as_view(), name=FechamentoUnidadeList.name),
+    path('fechamentounidade/id=<int:pk>/', FechamentoUnidadeDetalhe.as_view(), name=FechamentoUnidadeDetalhe.name),
 
 ]
 
