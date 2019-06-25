@@ -9,19 +9,19 @@ from grade.models import *
 from grade.serializer import *
 
 
-class DisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class DisciplinaDetalhe(generics.RetrieveAPIView):
     name = 'disciplina-detail'
     queryset = Disciplina.objects.all()
     serializer_class = DisciplinaSerializer
 
 
-class DisciplinaList(generics.ListCreateAPIView):
+class DisciplinaList(generics.ListAPIView):
     name = 'disciplina-list'
     queryset = Disciplina.objects.all()
     serializer_class = DisciplinaSerializer
 
 
-class GradeCursolist(generics.ListCreateAPIView):
+class GradeCursolist(generics.ListAPIView):
     name = 'gradecurso-list'
     queryset = GradeCurso.objects.select_related('seriedisciplina', 'disciplina', 'turma').all()
     serializer_class = GradeCursoSerializer
@@ -53,13 +53,13 @@ class GradeCursoProfessorTurma(APIView):
         return Response(serializer.data)
 
 
-class GradeCursoDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class GradeCursoDetalhe(generics.RetrieveAPIView):
     name = 'gradecurso-detail'
     queryset = GradeCurso.objects.select_related('professor', 'seriedisciplina', 'turma', 'disciplina').all()
     serializer_class = GradeCursoSerializer
 
 
-class SerieDisciplinaList(generics.ListCreateAPIView):
+class SerieDisciplinaList(generics.ListAPIView):
     queryset = SerieDisciplina.objects.select_related('serie', 'disciplina').all()
     serializer_class = SerieDisciplinaSerializer
     name = 'seriedisciplina-list'
@@ -105,32 +105,32 @@ class DisciplinaAlunoMatriculaDetalhe(APIView):
         return Response(serializer.data)
 
 
-class SerieDisciplinaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class SerieDisciplinaDetalhe(generics.RetrieveAPIView):
     queryset = SerieDisciplina.objects.select_related('serie', 'disciplina').all()
     serializer_class = SerieDisciplinaSerializer
     name = 'seriedisciplina-detail'
 
 
-class AnoLetivoList(generics.ListCreateAPIView):
+class AnoLetivoList(generics.ListAPIView):
     queryset = AnoLetivo.objects.all()
     serializer_class = AnoLetivoSerializer
     name = 'anoletivo-list'
 
 
-class AnoLetivoDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class AnoLetivoDetalhe(generics.RetrieveAPIView):
     queryset = AnoLetivo.objects.all()
     serializer_class = AnoLetivoSerializer
     name = 'anoletivo-detail'
 
 
-class DisciplinaAlunoList(generics.ListCreateAPIView):
+class DisciplinaAlunoList(generics.ListAPIView):
     queryset = DisciplinaAluno.objects.select_related('matricula', 'seriedisciplina',
                                                       'usuarioatualizacaoprovafinal').all()
     serializer_class = DisciplinaAlunoSerializerPost
     name = 'disciplinaaluno-list'
 
 
-class DisciplinaAlunoDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class DisciplinaAlunoDetalhe(generics.RetrieveAPIView):
     queryset = DisciplinaAluno.objects.select_related('matricula', 'seriedisciplina',
                                                       'usuarioatualizacaoprovafinal').all()
     serializer_class = DisciplinaAlunoSerializerPost

@@ -11,13 +11,13 @@ from rest_framework import generics
 
 # Create your views here.
 
-class TipoOcorrenciaList(generics.ListCreateAPIView):
+class TipoOcorrenciaList(generics.ListAPIView):
     name = 'tipoocorrencia-list'
     queryset = TipoOcorrencia.objects.all()
     serializer_class = TipoOcorrenciaSerializer
 
 
-class TipoOcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class TipoOcorrenciaDetalhe(generics.RetrieveAPIView):
     name = 'tipoocorrencia-detail'
     queryset = TipoOcorrencia.objects.all()
     serializer_class = TipoOcorrenciaSerializer
@@ -26,13 +26,20 @@ class TipoOcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
 class OcorrenciaList(generics.ListCreateAPIView):
     name = 'ocorrencia-list'
     queryset = Ocorrencia.objects.all()
+    serializer_class = OcorrenciaSerializer
+
+
+class OcorrenciaListPost(generics.ListCreateAPIView):
+    name = 'ocorrencia-list'
+    queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializerPost
+
 
 
 class OcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'ocorrencia-detail'
     queryset = Ocorrencia.objects.all()
-    serializer_class = OcorrenciaSerializerPost
+    serializer_class = OcorrenciaSerializer
 
 
 class OcorrenciaDetalheAluno(APIView):

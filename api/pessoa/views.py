@@ -21,7 +21,7 @@ class PessoaFisicaList(generics.ListAPIView):
     name = 'pessoa-list'
 
 
-class PessoaFisicaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class PessoaFisicaDetalhe(generics.RetrieveAPIView):
     queryset = PessoaFisica.objects.all()
     serializer_class = PessoaFisicaSerializer
     name = 'pessoa-detail'
@@ -82,7 +82,7 @@ class UsuarioPerfil(APIView):
         return Response(serializer.data)
 
 
-class UsuarioDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class UsuarioDetalhe(generics.RetrieveAPIView):
     name = 'usuario-detail'
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
@@ -94,7 +94,7 @@ class PerfilList(generics.ListAPIView):
     serializer_class = PerfilSerializer
 
 
-class PerfilDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class PerfilDetalhe(generics.RetrieveAPIView):
     name = 'perfil-detail'
     queryset = Perfil.objects.all()
     serializer_class = PerfilSerializer

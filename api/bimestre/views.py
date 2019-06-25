@@ -14,13 +14,13 @@ from rest_framework import status
 from rest_framework import generics
 
 
-class BimestreList(generics.ListCreateAPIView):
+class BimestreList(generics.ListAPIView):
     name = 'bimestre-lista'
     queryset = Bimestre.objects.all()
     serializer_class = BimestreSerializer
 
 
-class BimestreDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class BimestreDetalhe(generics.RetrieveAPIView):
     name = 'bimestre-detail'
     queryset = Bimestre.objects.all()
     serializer_class = BimestreSerializer

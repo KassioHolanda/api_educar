@@ -15,7 +15,7 @@ class UnidadeList(generics.ListAPIView):
     name = 'unidade-list'
 
 
-class UnidadeDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class UnidadeDetalhe(generics.RetrieveAPIView):
     queryset = Unidade.objects.all()
     serializer_class = UnidadeSerializer
     name = 'unidade-detail'
@@ -37,7 +37,7 @@ class LocalEscolaUnidade(APIView):
         return Response(serializer.data)
 
 
-class LocalEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class LocalEscolaDetalhe(generics.RetrieveAPIView):
     queryset = LocalEscola.objects.all()
     serializer_class = LocalEscolaSerializer
     name = 'localescola-detail'
@@ -65,12 +65,19 @@ class TurmaSala(APIView):
         return Response(serializer.data)
 
 
-class TurmaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class TurmaDetalheSerializado(generics.RetrieveAPIView):
     name = 'turma-detail'
     queryset = Turma.objects.filter(statusturma='CADASTRADA')
     serializer_class = TurmaSerializer
 
-class TurmaDetalheSerializado(generics.RetrieveUpdateDestroyAPIView):
+
+class TurmaDetalhe(generics.RetrieveAPIView):
+    name = 'turma-detail'
+    queryset = Turma.objects.filter(statusturma='CADASTRADA')
+    serializer_class = TurmaSerializer
+
+
+class kkkkTurmaDetalheSerializado(generics.RetrieveAPIView):
     name = 'turma-detail'
     queryset = Turma.objects.filter(statusturma='CADASTRADA')
     serializer_class = TurmaSerializer
@@ -92,7 +99,7 @@ class SerieList(generics.ListAPIView):
     name = 'serie-list'
 
 
-class SerieDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class SerieDetalhe(generics.RetrieveAPIView):
     queryset = Serie.objects.all()
     serializer_class = SerieSerializer
     name = 'serie-detail'
@@ -138,3 +145,15 @@ class SerieTurmaDetalhe(APIView):
     queryset = SerieTurma.objects.all()
     serializer_class = SerieTurmaSerializer
     name = 'serieturma-detail'
+
+
+class FechamentoUnidadeDetalhe(generics.RetrieveAPIView):
+    queryset = FechamentoUnidade.objects.all()
+    serializer_class = FechamentoUnidadeSerializer
+    name = 'fechamentounidade-detail'
+
+
+class FechamentoUnidadeList(generics.ListAPIView):
+    queryset = FechamentoUnidade.objects.all()
+    serializer_class = FechamentoUnidadeSerializer
+    name = 'fechamentounidade-list'

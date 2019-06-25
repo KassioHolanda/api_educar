@@ -16,13 +16,13 @@ from rest_framework import status
 from rest_framework import generics
 
 
-class FuncionarioList(generics.ListCreateAPIView):
+class FuncionarioList(generics.ListAPIView):
     name = 'funcionario-list'
     queryset = Funcionario.objects.filter(cargo=5)
     serializer_class = FuncionarioSerializerAjuda
 
 
-class FuncionarioDetail(generics.RetrieveUpdateDestroyAPIView):
+class FuncionarioDetail(generics.RetrieveAPIView):
     name = 'funcionario-detail'
     queryset = Funcionario.objects.all()
     serializer_class = FuncionarioSerializerAjuda
@@ -48,25 +48,25 @@ class FuncionarioCPF(APIView):
         return Response(serializer.data)
 
 
-class CargoList(generics.ListCreateAPIView):
+class CargoList(generics.ListAPIView):
     name = 'cargo-list'
     queryset = Cargo.objects.all()
     serializer_class = CargoSerializer
 
 
-class CargoDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class CargoDetalhe(generics.RetrieveAPIView):
     name = 'cargo-detail'
     queryset = Cargo.objects.all()
     serializer_class = CargoSerializer
 
 
-class FuncionarioEscolaLista(generics.ListCreateAPIView):
+class FuncionarioEscolaLista(generics.ListAPIView):
     name = 'funcionarioescola-list'
     queryset = FuncionarioEscola.objects.all()
     serializer_class = FuncionarioEscolaSerializer
 
 
-class FuncionarioEscolaDetalhe(generics.RetrieveUpdateDestroyAPIView):
+class FuncionarioEscolaDetalhe(generics.RetrieveAPIView):
     name = 'funcionarioescola-detail'
     queryset = FuncionarioEscola.objects.select_related('funcionario', 'unidade').all()
     serializer_class = FuncionarioEscolaSerializer
