@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from funcionario.models import Cargo, FuncionarioEscola, Funcionario
-from pessoa.models import PessoaFisica
 from pessoa.serializer import PessoaFisicaSerializer
 from unidade.serializer import UnidadeSerializer
 

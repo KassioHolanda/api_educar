@@ -27,11 +27,10 @@ class MatriculaSerializer(serializers.HyperlinkedModelSerializer):
     # # turma = TurmaSerializer(many=False)
     serie = SerieSerializer(many=False)
     anoletivo = AnoLetivoSerializer(many=False)
-    todas_disciplinas_aluno = DisciplinaAlunoSerializer(many=True)
 
     class Meta:
         model = Matricula
-        fields = 'id', 'aluno', 'statusmatricula', 'datamatricula', 'statusatual', 'serie', 'anoletivo', 'todas_disciplinas_aluno',
+        fields = 'id', 'aluno', 'statusmatricula', 'datamatricula', 'statusatual', 'serie', 'anoletivo',
 
 
 class AlunoFrequenciaMesSerializer(serializers.ModelSerializer):
@@ -69,11 +68,7 @@ class AlunoFrequenciaMesSerializerPost(serializers.ModelSerializer):
 
 
 class MatriculaSerializacaoAlunoFrequenciaMesEAlunoNotaMes(serializers.HyperlinkedModelSerializer):
-    # aluno = AlunoSerializer(many=False)
-    # # turma = TurmaSerializer(many=False)
-    # serie = SerieSerializer(many=False)
-    # anoletivo = AnoLetivoSerializer(many=False)
-    # todas_disciplinas_aluno = DisciplinaAlunoSerializer(many=True)
+    todas_disciplinas_aluno = DisciplinaAlunoSerializer(many=True)
 
     aluno_frequencia_mes = AlunoFrequenciaMesSerializer(many=True)
     aluno_nota_mes = AlunoNotaMesSerializer(many=True)
@@ -81,4 +76,4 @@ class MatriculaSerializacaoAlunoFrequenciaMesEAlunoNotaMes(serializers.Hyperlink
 
     class Meta:
         model = Matricula
-        fields = 'id', 'aluno_frequencia_mes', 'aluno_nota_mes', 'ocorrencias'
+        fields = 'id', 'aluno_frequencia_mes', 'aluno_nota_mes', 'ocorrencias', 'todas_disciplinas_aluno'

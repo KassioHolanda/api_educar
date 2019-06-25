@@ -1,13 +1,12 @@
 from rest_framework import serializers, request
 from rest_framework.request import Request
 
-from aluno.serializer import MatriculaSerializer
 from grade.models import GradeCurso, Disciplina, SerieDisciplina, AnoLetivo, SituacaoTurmaMes, DisciplinaAluno
 from grade.serializer import TurmaSerializer, SerieDisciplinaSerializer, DisciplinaSerializer
 from pessoa.models import PessoaFisica, Usuario, Perfil
 from funcionario.serializer import *
 from unidade.models import LocalEscola, Unidade, Serie, Turma, SerieTurma
-from unidade.serializer import SerieSerializer
+from unidade.serializer import SerieSerializer, FechamentoUnidadeSerializer
 
 
 class AnoLetivoSerializerHelper(serializers.HyperlinkedModelSerializer):
@@ -27,8 +26,9 @@ class GradeCursoSerializerHelper(serializers.HyperlinkedModelSerializer):
                   # 'professor',
                   'seriedisciplina',
                   # 'turma',
-                  'disciplina'
+                  'disciplina',
                   )
+
 
 class SituacaoTurmaMesSerializerHelper(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -40,14 +40,17 @@ class TurmaSerializerHelper(serializers.HyperlinkedModelSerializer):
     # sala = LocalEscolaSerializerHelper(many=False)
     anoletivo = AnoLetivoSerializerHelper(many=False)
     serie = SerieSerializer(many=False)
-    grade_curso = GradeCursoSerializerHelper(many=True)
+
+    # grade_curso = GradeCursoSerializerHelper(many=True)
+
     # matriculas = MatriculaSerializer(many=True)
 
     class Meta:
         model = Turma
-        fields = ('id', 'descricao', 'turno', 'anoletivo', 'nivel', 'statusturma', 'anoletivo', 'serie', 'grade_curso',
-                 # 'matriculas',
-                 #  'situacao_turma_mes'
+        fields = ('id', 'descricao', 'turno', 'anoletivo', 'nivel', 'statusturma', 'anoletivo', 'serie',
+                  # 'grade_curso',
+                  # 'matriculas',
+                  #  'situacao_turma_mes'
                   )
 
 
@@ -62,6 +65,7 @@ class LocalEscolaSerializerHelper(serializers.HyperlinkedModelSerializer):
 
 class UnidadeSerializerHelper(serializers.HyperlinkedModelSerializer):
     locais_escola = LocalEscolaSerializerHelper(many=True)
+    fechamento_unidade = FechamentoUnidadeSerializer(many=True)
 
     class Meta:
         model = Unidade
@@ -69,7 +73,8 @@ class UnidadeSerializerHelper(serializers.HyperlinkedModelSerializer):
                   'abreviacao',
                   'cnpj',
                   'locais_escola',
-                  'nome'
+                  'nome',
+                  'fechamento_unidade'
                   )
 
 
@@ -88,6 +93,7 @@ class FuncionarioEscolaSerializerHelper(serializers.HyperlinkedModelSerializer):
         model = FuncionarioEscola
         fields = ('id',
                   'ativo',
+                  'datafinal',
                   'unidade',
                   # 'funcionario'
                   # 'grade_curso'
@@ -129,7 +135,7 @@ class PessoaFisicaSerializerHelper(serializers.HyperlinkedModelSerializer, ):
 class FuncionarioSerializerHelper(serializers.HyperlinkedModelSerializer):
     cargo = CargoSerializerHelper(many=False)
     funcionario_escolas = FuncionarioEscolaSerializerHelper(many=True)
-    # grade_curso = GradeCursoSerializerHelper(many=True)
+    grade_curso = GradeCursoSerializerHelper(many=True)
     pessoafisica = PessoaFisicaSerializerHelper(many=False)
 
     class Meta:
@@ -143,7 +149,7 @@ class FuncionarioSerializerHelper(serializers.HyperlinkedModelSerializer):
                   'funcionario_escolas',
                   'dataadmissao',
                   'statusfuncionario',
-                  # 'grade_curso',
+                  'grade_curso',
                   'pessoafisica',
                   )
 

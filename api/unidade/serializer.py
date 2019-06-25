@@ -1,14 +1,27 @@
 from rest_framework import serializers
 
-from aluno.serializer import MatriculaSerializer
-from unidade.models import Unidade, LocalEscola, Turma, Serie, SerieTurma
+from aluno.serializer import *
 from grade.serializer import *
+from unidade.models import *
 
 
-class UnidadeSerializer(serializers.HyperlinkedModelSerializer):
+class FechamentoUnidadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FechamentoUnidade
+        fields = '__all__'
+
+
+class UnidadeSerializer(serializers.ModelSerializer):
+    # fechamento_unidade = FechamentoUnidadeSerializer(many=True)
+
     class Meta:
         model = Unidade
-        fields = ('id', 'abreviacao', 'cnpj', 'nome')
+        fields = ('id',
+                  'abreviacao',
+                  'cnpj',
+                  'nome',
+                  # 'fechamento_unidade'
+                  )
 
 
 class LocalEscolaSerializer(serializers.HyperlinkedModelSerializer):
@@ -53,9 +66,9 @@ class TurmaSerializerSimplificada(serializers.HyperlinkedModelSerializer):
     sala = LocalEscolaSerializer(many=False)
     anoletivo = AnoLetivoSerializer(many=False)
     serie = SerieSerializer(many=False)
+
     # matriculas = MatriculaSerializer(many=True)
 
     class Meta:
         model = Turma
         fields = 'id', 'descricao', 'turno', 'sala', 'anoletivo', 'serie', 'nivel', 'statusturma',
-

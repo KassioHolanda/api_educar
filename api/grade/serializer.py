@@ -58,7 +58,7 @@ class GradeCursoSerializer(serializers.HyperlinkedModelSerializer):
                   'disciplina')
 
 
-class DisciplinaAlunoSerializer(serializers.HyperlinkedModelSerializer):
+class DisciplinaAlunoSerializer(serializers.ModelSerializer):
     seriedisciplina = SerieDisciplinaSerializer(many=False)
     # matricula = MatriculaSerializer(many=False)
 
@@ -68,7 +68,7 @@ class DisciplinaAlunoSerializer(serializers.HyperlinkedModelSerializer):
                   'cargahoraria',
                   'statusdisciplinaaluno',
                   'statusatual',
-                  # 'matricula',
+                  'matricula',
                   'seriedisciplina',
                   'mediaacumulada',
                   'mesesfechadosnota',

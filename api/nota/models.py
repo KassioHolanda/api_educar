@@ -25,11 +25,11 @@ class AlunoNotaMes(models.Model):
     usuario = models.ForeignKey('pessoa.Usuario', on_delete=models.CASCADE, null=True,
                                 related_name='%(app_label)s_%(class)s_related', db_column='usuario_id')
 
-    # def save(self, *args, **kwargs):
-    #     if (self.id == None):
-    #         ultimoid = AlunoNotaMes.objects.all().aggregate(Max('id'))
-    #         self.id = ultimoid['id__max'] + 1
-    #         super(AlunoNotaMes, self).save()
+    def save(self, *args, **kwargs):
+        if (self.id == None):
+            ultimoid = AlunoNotaMes.objects.all().aggregate(Max('id'))
+            self.id = ultimoid['id__max'] + 1
+            super(AlunoNotaMes, self).save()
 
     class Meta:
         managed = False
