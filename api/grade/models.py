@@ -1,8 +1,10 @@
 from django.db import models
 from django.db.models import Avg, Max
 
-
 # Create your models here.
+from unidade.models import *
+
+
 class Disciplina(models.Model):
     descricao = models.CharField('descricao', max_length=255, null=True)
     codigo = models.IntegerField('codigo')

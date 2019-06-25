@@ -19,11 +19,11 @@ class Funcionario(models.Model):
 
     @property
     def funcionario_escolas(self):
-        return FuncionarioEscola.objects.filter(funcionario=self)
+        return FuncionarioEscola.objects.select_related('funcionario').filter(funcionario=self)
 
     @property
     def grade_curso(self):
-        return GradeCurso.objects.filter(professor=self)
+        return GradeCurso.objects.select_related('professor').filter(professor=self)
 
     class Meta:
         managed = False
@@ -46,6 +46,7 @@ class Cargo(models.Model):
 
 class FuncionarioEscola(models.Model):
     ativo = models.BooleanField('ativo', null=False)
+    datafinal = models.DateField()
     unidade = models.ForeignKey('unidade.Unidade', on_delete=models.CASCADE,
                                 related_name='%(app_label)s_%(class)s_related', db_column='unidade_id')
     funcionario = models.ForeignKey('Funcionario', on_delete=models.CASCADE,

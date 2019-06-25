@@ -50,7 +50,7 @@ class Matricula(models.Model):
 
     @property
     def todas_disciplinas_aluno(self):
-        return DisciplinaAluno.objects.filter(matricula=self)
+        return DisciplinaAluno.objects.filter(matricula=self, statusdisciplinaaluno='EM_ANDAMENTO')
 
     @property
     def todas_alunos_notas_mes(self):
@@ -81,18 +81,16 @@ class AlunoFrequenciaMes(models.Model):
                                    db_column='disciplina_id')
 
     disciplinaaluno = models.ForeignKey('grade.DisciplinaAluno', on_delete=models.CASCADE,
-                                        related_name='%(app_label)s_%(class)s_related',
+                                        related_name='%(app_label)s_%(class)s_related', null=True,
                                         db_column='disciplinaaluno_id')
 
     class Meta:
         managed = False
         db_table = 'alunofrequenciames'
         ordering = ('id',)
-    #
-    # def save(self, *args, **kwargs):
-    #     ultimoid = AlunoFrequenciaMes.objects.all().aggregate(Max('id'))
-    #     self.id = ultimoid['id__max'] + 1
-    #     super(AlunoFrequenciaMes, self).save()
-    #
-    #
-    #
+
+    def save(self, *args, **kwargs):
+        if (self.id == None):
+            ultimoid = AlunoFrequenciaMes.objects.all().aggregate(Max('id'))
+            self.id = ultimoid['id__max'] + 1
+            super(AlunoFrequenciaMes, self).save()

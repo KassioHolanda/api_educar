@@ -49,10 +49,6 @@ class Ocorrencia(models.Model):
                                 db_column='unidade_id')
 
     enviadosms = models.BooleanField()
-    anoletivo = models.ForeignKey('grade.AnoLetivo', on_delete=models.CASCADE,
-                                  related_name='%(app_label)s_%(class)s_related',
-                                  db_column='ano_letivo', null=True)
-
     dataenviosms = models.DateTimeField(null=True)
     resumosms = models.CharField(max_length=255, null=True)
     observacao = models.CharField(max_length=255, null=True)
@@ -63,9 +59,10 @@ class Ocorrencia(models.Model):
         return self.aluno + ' - ' + self.tipoocorrencia
 
     def save(self, *args, **kwargs):
-        ultimoid = Ocorrencia.objects.all().aggregate(Max('id'))
-        self.id = ultimoid['id__max'] + 1
-        super(Ocorrencia, self).save()
+        if (self.id == None):
+            ultimoid = Ocorrencia.objects.all().aggregate(Max('id'))
+            self.id = ultimoid['id__max'] + 1
+            super(Ocorrencia, self).save()
 
     class Meta:
         managed = False
