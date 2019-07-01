@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import filters, viewsets
+from rest_framework.permissions import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -13,6 +14,8 @@ class AlunoNotaMesList(generics.ListCreateAPIView):
     name = 'alunonotames-list'
     queryset = AlunoNotaMes.objects.select_related('bimestre', 'disciplinaaluno', 'anoletivo', 'matricula', 'unidade',
                                                    'disciplina', 'usuario').all()
+
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
     serializer_class = AlunoNotaMesSerializerPost
 
 
@@ -20,6 +23,7 @@ class AlunoNotaMesDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'alunonotames-detail'
     queryset = AlunoNotaMes.objects.all()
     serializer_class = AlunoNotaMesSerializerPost
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class AlunoNotaMesDetalheMatricula(APIView):

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import filters, viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from ocorrencia.models import *
 from ocorrencia.serializer import *
 from rest_framework.views import APIView
@@ -27,12 +29,14 @@ class OcorrenciaList(generics.ListCreateAPIView):
     name = 'ocorrencia-list'
     queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class OcorrenciaListPost(generics.ListCreateAPIView):
     name = 'ocorrencia-list'
     queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializerPost
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 
@@ -40,6 +44,7 @@ class OcorrenciaDetalhe(generics.RetrieveUpdateDestroyAPIView):
     name = 'ocorrencia-detail'
     queryset = Ocorrencia.objects.all()
     serializer_class = OcorrenciaSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class OcorrenciaDetalheAluno(APIView):

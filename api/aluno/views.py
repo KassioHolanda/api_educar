@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import filters, viewsets
 
 # Create your views here.
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from aluno.models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -56,12 +58,14 @@ class AlunoFrequenciaMesList(generics.ListCreateAPIView):
     name = 'alunofrequenciames-list'
     queryset = AlunoFrequenciaMes.objects.select_related('matricula', 'bimestre', 'disciplina', 'disciplinaaluno').all()
     serializer_class = AlunoFrequenciaMesSerializerPost
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class AlunoFrequenciaMesDetail(generics.RetrieveUpdateDestroyAPIView):
     name = 'alunofrequenciames-detail'
     queryset = AlunoFrequenciaMes.objects.select_related('matricula', 'bimestre', 'disciplina', 'disciplinaaluno').all()
     serializer_class = AlunoFrequenciaMesSerializerPost
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
 
 class AlunoFrequenciaMesMatricula(APIView):
