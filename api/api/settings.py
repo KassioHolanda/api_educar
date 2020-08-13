@@ -84,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'educar_teste',
-        'USER': 'app_professor',
-        'PASSWORD': 'D3lt@pr0',
+        'USER': 'kassio',
+        'PASSWORD': 'Delta@2019#',
         'HOST': 'delta.czk02kyg8fah.us-east-1.rds.amazonaws.com',
         'PORT': '5432'
     }
@@ -96,7 +96,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 
     'DEFAULT_FILTER_BACKENDS': (
